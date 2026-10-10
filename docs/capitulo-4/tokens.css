@@ -1,0 +1,81 @@
+/*
+ * MISTHY · Design tokens
+ * Exportados de la colección de variables «MISTHY Tokens» del archivo Figma
+ * «MISTHY — Capítulo IV Product Design». Cada variable tiene code syntax WEB
+ * con el mismo nombre, así que Dev Mode muestra exactamente estas propiedades.
+ */
+:root {
+  /* Marca */
+  --brand-primary: #6D28D9;
+  --brand-primary-hover: #5B21B6;
+  --brand-secondary: #2563EB;
+  --brand-gradient: linear-gradient(135deg, #6D28D9 0%, #2563EB 100%);
+
+  /* Neutros */
+  --neutral-night: #0F172A;
+  --neutral-night-2: #1E293B;
+
+  /* Superficies */
+  --surface-lavender: #F3EEFF;
+  --surface-background: #F8FAFC;
+  --surface-card: #FFFFFF;
+  --surface-border: #E4E7EC;
+
+  /* Texto */
+  --text-primary: #0F172A;
+  --text-secondary: #667085;
+  --text-on-color: #FFFFFF;
+
+  /* Estados (siempre acompañados de texto e ícono) */
+  --status-emergency: #DC2626;
+  --status-emergency-bg: #FEF3F2;
+  --status-warning: #B54708;
+  --status-warning-bg: #FFFAEB;
+  --status-success: #067647;
+  --status-success-bg: #ECFDF3;
+  --status-info: #175CD3;
+  --status-info-bg: #EFF8FF;
+
+  /* Wireframes (escala de grises) */
+  --wire-fill: #F2F4F7;
+  --wire-block: #D0D5DD;
+  --wire-ink: #475467;
+
+  /* Espaciado (base 4) */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+
+  /* Radios */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Tipografía */
+  --font-brand: "Manrope", system-ui, sans-serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+}
+
+/* Estilos de texto (equivalentes a los text styles de Figma) */
+.text-display-landing { font: 700 56px/110% var(--font-brand); }
+.text-heading-h1      { font: 700 32px/125% var(--font-brand); }
+.text-heading-h2      { font: 600 24px/130% var(--font-brand); }
+.text-heading-h3      { font: 600 20px/140% var(--font-ui); }
+.text-body-regular    { font: 400 16px/150% var(--font-ui); }
+.text-body-medium     { font: 500 16px/150% var(--font-ui); }
+.text-body-semibold   { font: 600 16px/150% var(--font-ui); }
+.text-label-regular   { font: 400 14px/143% var(--font-ui); }
+.text-label-medium    { font: 500 14px/143% var(--font-ui); }
+.text-caption         { font: 400 12px/150% var(--font-ui); }
+
+/* Breakpoints de referencia (4.1.2) */
+/* Mobile 360–599 · Tablet 600–1023 · Desktop 1024–1439 · Wide ≥ 1440 (contenedor máx. 1280) */
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}
