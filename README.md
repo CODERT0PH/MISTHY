@@ -1,29 +1,19 @@
-# MISTHY
+# MISTHY-
+Application web Application mobile to security
 
-Proyecto personal de **Christoper Steven Rivas Castillo (CODERT0PH)** para explorar una plataforma de seguridad ciudadana, registro privado de incidentes y seguimiento de gestiones en Perú.
+**Autor:** [CODERT0PH](https://github.com/CODERT0PH)
+
+MISTHY es un SaaS de seguridad ciudadana 360° para Lima (piloto: Villa El Salvador): app móvil para el ciudadano, **Misthy Web** (recuperación tras un robo) y **Misthy Command** (dashboard para municipalidades y serenazgo).
 
 ## Documentación
 
-| Capítulo | Documento de trabajo | Rama |
-|---|---|---|
-| I. Introducción | [Startup, problemática peruana, Lean UX y segmentos](docs/capitulo-1/README.md) | `feature-capitulo1` |
-| II. Requirements Elicitation & Analysis | [Competencia, entrevistas, needfinding y lenguaje del dominio](https://github.com/CODERT0PH/MISTHY-/blob/feature-capitulo2/docs/capitulo-2/README.md) | `feature-capitulo2` |
-| III. Requirements Specification | [Historias, Impact Mapping y backlog](https://github.com/CODERT0PH/MISTHY-/blob/feature-capitulo3/docs/capitulo-3/README.md) | `feature-capitulo3` |
+| Capítulo | Contenido |
+|---|---|
+| [Capítulo I · Introducción](docs/capitulo-1/README.md) | 1.1 Startup Profile · 1.2 Solution Profile (problemática, Lean UX) · 1.3 Segmentos objetivo |
+| [Capítulo II · Requirements Elicitation & Analysis](docs/capitulo-2/README.md) | 2.1 Competidores · 2.2 Entrevistas · 2.3 Needfinding · 2.4 EventStorming · 2.5 Ubiquitous Language |
+| [Capítulo III · Requirements Specification](docs/capitulo-3/README.md) | 3.1 User Stories · 3.2 Impact Mapping · 3.3 Product Backlog |
+| [Capítulo IV · Product Design](docs/capitulo-4/README.md) | 4.1 Style Guidelines · 4.2 Information Architecture · 4.3 Landing Page UI Design · 4.4 Web Applications UX/UI Design · 4.5 Web Applications Prototyping |
 
-Cada capítulo contiene su índice y referencias. Los enlaces a ramas permiten revisar documentos independientes antes de su integración en `develop`. `main` no se modifica en esta fase.
+Los capítulos usan las mismas personas (Lucía Rojas, Carlos Mendoza y Rosa Huamán), los mismos user goals (UF1–UF6) y los mismos módulos (M1–M8 de la app, Misthy Web y Misthy Command).
 
-## Alcance y estado
-
-- El PDF de UPC aportado sirve como guía de estructura; este es un proyecto propio, no una entrega de curso.
-- La visión incluye app, web de recuperación y Misthy Command. El MVP se concentra en una web adaptable, registro privado, red de confianza y seguimiento.
-- Stack propuesto: Vue 3 + Vite, Node.js y SQL Server. No hay implementación acreditada por estos documentos.
-- Figma y capítulo IV se trabajan por separado con Claude; no se modifican aquí.
-- Las entrevistas, los perfiles derivados de ellas y las pruebas de campo siguen pendientes. Los artefactos preliminares están etiquetados como hipótesis.
-
-## Control documental
-
-| Versión | Fecha | Responsable | Cambio |
-|---|---|---|---|
-| 0.1.0 | 2026-10-09 | Christoper Steven Rivas Castillo, con asistencia de Codex | Base de capítulo I y navegación hacia las ramas de capítulos II y III. |
-
-Se utilizan Conventional Commits (`docs(capitulo1): ...`) y ramas desde `develop`. No se atribuyen entrevistas, sesiones de equipo ni resultados inexistentes al autor.
+Los diseños viven en Figma: [MISTHY — Capítulo IV Product Design](https://www.figma.com/design/MNhixqFUFzjBqxVnzp5dTJ). Los tokens de diseño para desarrollo están en [`docs/capitulo-4/tokens.css`](docs/capitulo-4/tokens.css).

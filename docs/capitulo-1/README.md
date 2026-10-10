@@ -1,8 +1,8 @@
 # Capítulo I: Introducción
 
-**Proyecto personal:** MISTHY. **Autor:** Christoper Steven Rivas Castillo — CODERT0PH. **Versión:** 0.1.0. **Fecha de corte:** 9 de octubre de 2026, Lima.
+**Proyecto personal:** MISTHY («Tu ciudad te cuida»). **Autor:** Christoper Steven Rivas Castillo — [CODERT0PH](https://github.com/CODERT0PH). **Versión:** 0.2.0. **Fecha de corte:** 10 de octubre de 2026, Lima.
 
-Este capítulo presenta la visión del producto y sus hipótesis iniciales. El enunciado de Aplicaciones Web proporcionado por el autor se utiliza como guía de estructura; no convierte el proyecto en una entrega universitaria. No se incluyen NRC, profesor, integrantes ficticios ni resultados de investigación de usuarios que todavía no existen.
+Este capítulo presenta la startup, el problema que motiva MISTHY, la solución completa (Misthy App, Misthy Web y Misthy Command) y sus hipótesis iniciales. Los nombres de productos, módulos, personas y user goals son los mismos que usa el [Capítulo IV · Product Design](../capitulo-4/README.md) y el [archivo Figma](https://www.figma.com/design/MNhixqFUFzjBqxVnzp5dTJ), para que los cuatro capítulos se lean como un solo documento. El enunciado de Aplicaciones Web aportado por el autor se usa como guía de estructura; este es un proyecto propio.
 
 ## Contenido
 
@@ -25,184 +25,235 @@ Este capítulo presenta la visión del producto y sus hipótesis iniciales. El e
 <a id="descripcion"></a>
 ### 1.1.1. Descripción de la startup
 
-MISTHY es una iniciativa personal de tecnología para la seguridad ciudadana en Perú. Propone conectar a personas, redes de confianza y organizaciones de apoyo mediante reportes privados, alertas, conservación de información y seguimiento de actuaciones. Su propósito es reducir la desorientación que puede experimentar una persona ante un robo, una amenaza o una presunta extorsión, especialmente cuando pierde acceso a su teléfono o no conoce el estado de la ayuda solicitada.
+MISTHY es un SaaS de seguridad ciudadana 360° para Lima, con piloto en Villa El Salvador (VES). No es «otra app de botón de pánico»: es la capa de datos y respuesta en tiempo real entre el ciudadano, su red de confianza, la comunidad y las autoridades locales (serenazgo y comisarías). El nombre y la marca se inspiran en el volcán Misti: *«como el Misti vigila Arequipa, Misthy vigila tu cuadra»*.
 
-La iniciativa parte de una preocupación expresa del fundador: la inseguridad no termina con el hecho delictivo. También comprende el temor a represalias, las dificultades para recibir atención, el desgaste de repetir un relato y la percepción de que la posibilidad de obtener justicia depende de recursos económicos o contactos. Esa preocupación orienta el diseño; no se presenta como una relación causal ya demostrada.
+La iniciativa responde a cuatro dolores de Lima que el fundador identificó y que el producto aborda módulo por módulo:
 
-**Misión propuesta:** facilitar que las personas pidan apoyo, organicen la información de un incidente y conserven visibilidad sobre las gestiones realizadas, con privacidad y acceso comprensible.
+| Dolor | Respuesta de MISTHY | Módulos |
+|---|---|---|
+| Robo de celular al paso | Ubicación, sirena, bloqueo remoto y borrado selectivo desde cualquier navegador con la Llave Misthy; rastreo por la Red Mesh cuando el equipo no tiene datos. | M4 Anti-Robo, Misthy Web |
+| Asalto con coacción | PIN de coacción que abre una pantalla señuelo mientras graba y alerta en silencio. | M5 PIN de Coacción, M2 Pánico |
+| Persecución o acoso | Falso Acompañante con voz IA, Modo Viaje Seguro y rutas a Puntos Misthy (comercios refugio). | M3, M8, M1 |
+| Impunidad y desorientación | Expediente probatorio PDF (fotos, audio, GPS, timestamps) enviado a la comisaría o al serenazgo, con seguimiento visible. | M6 Bóveda, Misthy Web, Misthy Command |
 
-**Visión propuesta:** desarrollar una infraestructura de coordinación ciudadana que pueda crecer desde un piloto local hacia otras ciudades de Perú y Latinoamérica, con colaboración institucional cuando existan acuerdos verificables.
+**Misión:** que cualquier persona pueda pedir ayuda, proteger su información y su celular, y llegar a la comisaría con evidencia ordenada, aunque le hayan robado el teléfono.
 
-**Principios:** protección de la persona; privacidad por defecto; trazabilidad de acciones; acceso sin discriminación económica a las funciones esenciales; estados honestos; rechazo a la exposición pública de víctimas o sospechosos y a las represalias.
+**Visión:** ser la infraestructura de seguridad ciudadana de Latinoamérica, empezando por un sector de VES y creciendo con municipalidades, juntas vecinales y universidades.
 
-La marca se inspira en el Misti. Se mantiene la dirección visual púrpura `#6D28D9`, azul `#2563EB` y azul noche `#0F172A`, con Manrope e Inter. El diseño detallado pertenece al capítulo IV y a Figma, trabajados por separado con Claude.
+**Principios** (los mismos del capítulo IV): claridad primero, honestidad de estados («Solicitud enviada → Pendiente → Confirmado por el dispositivo / No se pudo ejecutar»), acción en un paso, inclusión y consistencia entre productos. A ellos se suman privacidad por defecto, trazabilidad de acciones y atención crítica que nunca se prioriza por plan de pago.
 
-El modelo de negocio es una hipótesis freemium: funciones esenciales de apoyo para ciudadanos y herramientas de coordinación para organizaciones. Los precios previos de S/ 9.90–14.90 para una suscripción personal y S/ 150–350 para organizaciones vecinales son rangos exploratorios, no tarifas validadas ni evidencia de disposición de pago. La atención crítica no se priorizará por plan contratado. No existe una empresa constituida ni un convenio policial acreditado en los materiales revisados.
+**Identidad:** púrpura `#6D28D9`, azul `#2563EB` y azul noche `#0F172A`, con Manrope e Inter. El detalle visual, los tokens y los componentes están en el [Capítulo IV, 4.1](../capitulo-4/README.md#41-style-guidelines).
+
+**Modelo de negocio (freemium + B2B/B2G):**
+
+| Cliente | Plan (como aparece en el landing del capítulo IV) | Precio referencial / mes |
+|---|---|---|
+| Ciudadano | Misthy Free → Misthy Pro | Gratis / S/ 9.90–14.90 |
+| Juntas vecinales y condominios | Organizaciones | S/ 150–350 por cuadrante |
+| Universidades | Organizaciones | S/ 1 200–3 000 por campus |
+| Municipalidades | Misthy Command | S/ 4 500–8 500 por distrito |
+
+Los precios son referenciales y se validarán en el piloto. Las funciones esenciales de emergencia (pánico, acceso de emergencia, bloqueo y aviso a contactos) son gratuitas. La empresa aún no está constituida y no existe todavía un convenio firmado con la PNP ni con una municipalidad.
 
 <a id="autor"></a>
 ### 1.1.2. Perfil del autor y organización del trabajo
 
-**Christoper Steven Rivas Castillo (CODERT0PH)** es el único participante y responsable de MISTHY. Estudia Ingeniería de Software, cursa el séptimo ciclo en la UPC y reside en Lima. Sus áreas de trabajo declaradas abarcan desarrollo con JavaScript, Vue, Vite, C#, Java y Python; bases de datos relacionales y MongoDB; Git/GitHub; ciberseguridad y creación de contenido educativo.
+**Christoper Steven Rivas Castillo (CODERT0PH)** es el fundador y único responsable de MISTHY. Estudia Ingeniería de Software en la UPC (séptimo ciclo) y reside en Lima. Trabaja con JavaScript, Vue, Vite, C#, Java y Python; bases de datos relacionales y MongoDB; Git/GitHub; ciberseguridad y contenido educativo.
 
-En este proyecto asume las decisiones de producto, investigación, documentación, desarrollo y validación. Codex y Claude son herramientas de apoyo; no son integrantes humanos ni reemplazan entrevistas, revisión de especialistas o evidencia de uso. La elaboración asistida de un documento no demuestra que se haya ejecutado el software descrito.
+Asume las decisiones de producto, investigación, diseño, documentación, desarrollo y validación. Usa asistentes de IA como herramientas de apoyo; las entrevistas y la validación con usuarios reales siguen siendo trabajo pendiente del autor.
 
-La documentación se divide en ramas `feature-capitulo1`, `feature-capitulo2` y `feature-capitulo3`. Cada una parte de `develop` y se revisa antes de integrarla. Figma y capítulo IV quedan fuera de estos cambios.
+La documentación se organiza en una rama por capítulo: `feature-capitulo1`, `feature-capitulo2`, `feature-capitulo3` y `feauture-capitulo4` (Product Design, con los diseños de Figma).
 
 <a id="solucion"></a>
 ## 1.2. Solution Profile
 
-MISTHY propone tres experiencias complementarias: una aplicación para el ciudadano, una web de acceso y recuperación desde otro dispositivo y Misthy Command para coordinar incidentes dentro de una organización. Para una primera versión realizable por un desarrollador, se prioriza la experiencia web adaptable y el ciclo **registrar → compartir de forma controlada → coordinar → consultar seguimiento → exportar**.
+MISTHY es un ecosistema de tres productos que comparten la misma API, el mismo design system y el mismo lenguaje:
 
-Se conserva como propuesta técnica Vue 3 + Vite, API Node.js y SQL Server. Flutter queda en la visión móvil futura; Firebase o Supabase son alternativas por evaluar, no dos dependencias simultáneas ya elegidas. El PDF de referencia solicita otro backend para su curso, pero esa obligación académica no se aplica al proyecto personal por instrucción del autor.
+```
+Misthy App (Flutter) ────┐
+Misthy Web (Vue 3 + Vite) ┼─► API REST (Node.js) ─► SQL Server (usuarios, suscripciones, pagos)
+Misthy Command (Vue 3) ───┘        └──► Firebase o Supabase (tiempo real) · MongoDB en fase 2
+```
+
+**A. Misthy App (ciudadano, móvil, Flutter)**
+
+| # | Módulo | Funciones clave |
+|---|---|---|
+| M1 | Mapa Vivo | Mapa de calor de delitos verificados, pines comunitarios, alerta de voz/vibración al entrar en zona roja, Puntos Misthy (comercios refugio). |
+| M2 | Pánico | Triple pulso del botón de volumen, gesto en smartwatch, grabación de audio cifrada de 10 min, GPS en vivo a contactos y a la central. |
+| M3 | Modo Viaje Seguro | Escáner de placa de taxi/moto, geocerca de desvío, escalamiento automático a contactos si no respondes en 20 s. |
+| M4 | Anti-Robo | Rastreo por Red Mesh Bluetooth sin conexión, alarma remota al 100 % de volumen, fotos stealth, detección de «jalón» por sensores, bloqueo y wipe con llave privada. |
+| M5 | PIN de Coacción | PIN falso que abre una pantalla señuelo mientras activa un Lockdown silencioso en segundo plano. |
+| M6 | Bóveda | Documentos y credenciales cifrados (AES-256) y expediente probatorio PDF exportable. |
+| M7 | Comunidad | Reportes verificados, puntos, badges y ranking vecinal. |
+| M8 | Falso Acompañante | Llamada o videollamada simulada con voz IA para disuasión. |
+
+**B. Misthy Web (ciudadano, web responsive, mobile-first)** — diseñada en el capítulo IV (4.4) con los flujos UF1–UF3.
+
+- **Acceso de emergencia** (`misthy.app/emergencia`): correo + **Llave Misthy** (clave secreta de 12–16 caracteres). La bóveda completa exige además 2FA.
+- **Panel de recuperación:** Mi dispositivo (conexión, batería, última ubicación), Ubicación (mapa e historial), **Bloquear** (Lockdown), **Sirena**, **Bóveda** (congelar o borrar), **Avisar a PNP** (expediente) y **Contactos**.
+- Cada orden remota muestra su estado real: *Solicitud enviada*, *Pendiente de conexión*, *Confirmado por el dispositivo* o *No se pudo ejecutar · Reintentar*.
+
+**C. Misthy Command (municipalidades y serenazgo, desktop)** — diseñado en el capítulo IV con los flujos UF4–UF6.
+
+| Módulo | Función |
+|---|---|
+| Monitor | Mapa distrital y cola de alertas por severidad S1–S5. |
+| Despachar | Asignar el sereno o la unidad más cercana y seguir su estado (en camino, en sitio, cerrada). |
+| Reportes | Verificar o descartar reportes comunitarios con evidencia. |
+| Expedientes PNP | Bandeja de expedientes PDF, revisión y exportación para comisarías. |
+| Analítica | Patrones por hora, zona y tipo de delito; predicción de riesgo y reportes. |
+| Administración | Roles (operador, supervisor, admin), cobertura y facturación. |
+
+**Límites técnicos que se comunican con honestidad:** el botón de encendido no se puede anular en Android 12+ ni en iOS; la alternativa viable en Android es un modo kiosk que pide la Llave Misthy para abrir el menú de apagado (Device Admin), y en iOS la protección es más limitada. Un teléfono apagado no transmite GPS: se usa la última ubicación, la batería y el vector de movimiento enviados antes del apagado, y la Red Mesh cuando el equipo emite Bluetooth sin datos. MISTHY no garantiza recuperar el equipo, no reemplaza la denuncia formal y no determina culpables.
 
 <a id="problematica"></a>
 ### 1.2.1. Antecedentes y problemática
 
 #### Contexto documentado de Perú
 
-El INEI reporta, para julio–diciembre de 2025, una victimización de **23.9 %** y una percepción de inseguridad de **83.7 %** en la población urbana de 15 años o más. Son estimaciones preliminares de ENAPRES; el módulo tiene una muestra anual de 28 624 viviendas. La percepción se refiere a la posibilidad de sufrir un delito en los siguientes doce meses; no equivale a victimización ni a una probabilidad individual calculada. Estos datos contextualizan el problema nacional, no estiman la incidencia específica de Villa El Salvador [R1].
+El INEI reporta, para julio–diciembre de 2025, una victimización de **23.9 %** y una percepción de inseguridad de **83.7 %** en la población urbana de 15 años o más. Son estimaciones preliminares de ENAPRES (muestra anual de 28 624 viviendas). La percepción se refiere a la posibilidad de sufrir un delito en los siguientes doce meses; no equivale a victimización [R1].
 
-OSIPTEL informó **1 462 487 reportes de celulares robados durante 2025**, recibidos por las operadoras. Son reportes administrativos nacionales; no representan necesariamente víctimas únicas ni denuncias policiales [R2]. La pérdida del teléfono afecta también el acceso a contactos y a información almacenada, una dependencia que MISTHY debe investigar con usuarios.
+OSIPTEL informó **1 462 487 reportes de celulares robados durante 2025**, recibidos por las operadoras. Son reportes administrativos; no necesariamente víctimas únicas ni denuncias policiales [R2]. Perder el teléfono significa perder también contactos, cuentas, documentos y el propio canal para pedir ayuda: por eso Misthy Web existe como vía de recuperación desde un equipo prestado.
 
-La extorsión exige mirar más allá del robo. En octubre de 2024, la Defensoría del Pueblo solicitó mejorar la operatividad de la central 111 y permitir el registro de denuncias en SIDPOL para facilitar actuaciones de investigación [R3]. En marzo de 2025 alertó sobre extorsiones a instituciones educativas privadas que ocasionaban suspensión de clases presenciales [R4]. Estos antecedentes documentan afectaciones y necesidades de atención; no constituyen una tasa actual de extorsión para el piloto.
+La extorsión exige mirar más allá del robo. En octubre de 2024 la Defensoría del Pueblo pidió mejorar la operatividad de la central 111 y permitir el registro de denuncias en SIDPOL [R3]. En marzo de 2025 alertó sobre extorsiones a instituciones educativas privadas que obligaron a suspender clases presenciales [R4].
 
-En su informe de gobernabilidad de julio–diciembre de 2025, el INEI registra **84.6 % de desconfianza en la PNP** y **83.5 % en el Poder Judicial**, entre la población de 18 años o más, con datos preliminares de ENAHO y una muestra anual cercana a 37 mil viviendas [R5, cuadro 3]. Se trata de percepción institucional: no prueba inacción de cada policía ni permite calcular una tasa de impunidad.
+En su informe de gobernabilidad de julio–diciembre de 2025, el INEI registra **84.6 % de desconfianza en la PNP** y **83.5 % en el Poder Judicial** entre la población de 18 años o más [R5, cuadro 3]. Es percepción institucional, no una tasa de impunidad.
 
 #### Impunidad, barreras y acceso desigual a la justicia
 
-La preocupación por hechos sin esclarecimiento o sanción forma parte central del problema que motiva MISTHY. En esta versión no se asigna un porcentaje de impunidad: se requeriría seguir una misma cohorte de casos desde denuncia hasta resolución firme. Dividir denuncias de un año entre sentencias del mismo año produciría una comparación inválida si corresponden a expedientes y plazos distintos.
-
-La afirmación «solo hay justicia para quien tiene dinero» se trabaja como una **percepción de desigualdad y una hipótesis de barreras de acceso**, no como hecho universal. Las entrevistas explorarán tiempo disponible, gastos de traslado, comprensión de procedimientos, acceso a orientación, seguimiento y temor a represalias. El producto buscará reducir fricciones informativas sin atribuir corrupción o culpabilidad a personas sin evidencia.
+La preocupación por hechos sin esclarecimiento ni sanción es central en MISTHY. No se asigna un porcentaje de impunidad: calcularlo exigiría seguir una misma cohorte de casos desde la denuncia hasta la resolución firme. La idea de que «solo hay justicia para quien tiene dinero» se trabaja como percepción de desigualdad y como hipótesis de barreras de acceso (tiempo, traslados, comprensión de procedimientos, seguimiento y temor a represalias). El expediente probatorio y el seguimiento visible buscan reducir esas barreras.
 
 #### Antecedente ilustrativo: Liceo Naval y nueva denuncia en centro juvenil
 
-El autor aportó dos noticias. América Noticias informó sobre una audiencia de esclarecimiento de hechos del 9 de octubre de 2026 en la investigación por presunta agresión sexual vinculada al Liceo Naval Almirante Guise [R6]. Perú21 informó el 8 de octubre sobre una nueva denuncia de presunta agresión contra un adolescente internado en un centro juvenil y sobre medidas de protección comunicadas por Pronacej [R7]. Son episodios relacionados pero distintos; no deben confundirse sus víctimas ni sus actuaciones.
-
-Como contraste primario, el 17 de septiembre de 2026 la Defensoría señaló preocupación por la falta de atención oportuna de la institución educativa ante alertas y solicitó protección integral y determinación de responsabilidades [R8]. Esto respalda examinar fallas de protección y seguimiento. **Las fuentes revisadas no acreditan una sentencia definitiva, impunidad consumada ni favoritismo económico demostrado.**
-
-La lección de producto es preservar la cronología, registrar a quién se comunicó una alerta y diferenciar recepción, actuación y resultado. No se reproducen identidades, imágenes ni detalles gráficos de menores. El piloto no incluye investigación de violencia sexual infantil ni manejo de esos expedientes; su eventual abordaje exigiría un diseño especializado.
+América Noticias informó sobre una audiencia del 9 de octubre de 2026 en la investigación por presunta agresión sexual vinculada al Liceo Naval Almirante Guise [R6]. Perú21 informó el 8 de octubre sobre una nueva denuncia de presunta agresión contra un adolescente internado en un centro juvenil [R7]. El 17 de septiembre de 2026 la Defensoría señaló falta de atención oportuna de la institución educativa ante alertas y pidió protección integral [R8]. Las fuentes no acreditan una sentencia definitiva. La lección de producto es preservar la cronología, registrar a quién se comunicó cada alerta y diferenciar recepción, actuación y resultado. El piloto no maneja casos de menores de edad.
 
 #### Análisis 5W + 2H
 
 | Pregunta | Aplicación a MISTHY |
 |---|---|
-| Who — ¿Quién? | Personas adultas que necesitan apoyo ante incidentes y responsables de organizaciones vecinales o pequeños negocios que coordinan su atención. |
-| What — ¿Qué? | Dificultad para pedir apoyo, conservar información sensible y conocer qué gestiones se realizaron ante un robo, amenaza o presunta extorsión. |
-| Where — ¿Dónde? | Perú como contexto; un sector de Villa El Salvador como piloto propuesto, aún sin organización aliada confirmada. |
-| When — ¿Cuándo? | Antes del incidente al preparar contactos; durante al solicitar ayuda; después al conservar información y seguir gestiones. |
-| Why — ¿Por qué? | Hipótesis: información dispersa, pérdida de acceso al teléfono, coordinación informal, barreras de atención y desconfianza dificultan la continuidad. |
-| How — ¿Cómo ocurre hoy? | Hipótesis por validar: llamadas, mensajes, visitas presenciales y documentos separados sin una cronología compartida controlada. |
-| How much — ¿Cuánto? | Las fuentes nacionales dimensionan el contexto. Costos por víctima, tiempos locales y disposición de pago no se han medido; no se inventan estimaciones. |
+| Who — ¿Quién? | Ciudadanos adultos como Lucía (víctima de robo de celular), operadores de serenazgo como Carlos y supervisoras de gestión comunitaria como Rosa. |
+| What — ¿Qué? | Robo de celular, asalto con coacción, acoso y extorsión, seguidos de desorientación: sin teléfono, sin evidencia ordenada y sin saber si alguien atiende. |
+| Where — ¿Dónde? | Lima; piloto en un sector de Villa El Salvador, por sus sectores numerados y juntas vecinales organizadas. |
+| When — ¿Cuándo? | Antes (configurar Llave Misthy, contactos y bóveda), durante (pánico, viaje seguro, PIN de coacción) y después (recuperación, expediente PNP y seguimiento). |
+| Why — ¿Por qué? | Al perder el teléfono se pierde el canal para pedir ayuda; la información queda dispersa y la coordinación con serenazgo y PNP es informal. |
+| How — ¿Cómo ocurre hoy? | Llamadas desde teléfonos prestados, visitas a la comisaría sin evidencia, mensajes sueltos y herramientas de localización que no conectan con la autoridad local. |
+| How much — ¿Cuánto? | Las cifras nacionales dimensionan el contexto (R1, R2, R5). Tiempos de respuesta locales y disposición de pago se medirán en el piloto. |
 
-#### Objetivo y alcance inicial
+#### Objetivo y alcance
 
-**Objetivo general:** validar si una plataforma accesible de registro privado, coordinación y seguimiento ayuda a las personas a organizar un incidente y comprender el estado real de las gestiones realizadas.
+**Objetivo general:** validar que MISTHY reduce la desorientación de una persona ante un robo o una amenaza, protege su información y su equipo, y acorta el tiempo de respuesta del serenazgo en un sector piloto de VES.
 
-| Dentro del MVP propuesto | Fuera del compromiso inicial |
-|---|---|
-| Registro privado de robo, amenaza o presunta extorsión y cronología. | Investigar delitos, determinar culpabilidad o garantizar justicia. |
-| Red de confianza con invitaciones y consentimiento. | Publicar acusaciones, teléfonos de presuntos autores o identidades de víctimas. |
-| Solicitud de apoyo y estado verificable de notificación. | Garantizar despacho policial o llegada de ayuda en un tiempo fijo. |
-| Seguimiento interno y referencia externa añadida por el usuario. | Consultar expedientes oficiales sin acuerdo o integración autorizada. |
-| Archivos privados y exportación con metadatos de procedencia. | Certificar judicialmente pruebas o prometer admisibilidad del PDF. |
-| Recuperación de acceso desde otro equipo y revocación de sesiones. | Bloquear el sistema operativo, impedir apagado o rastrear un teléfono apagado. |
-| Ubicación consentida con hora y precisión; mapa comunitario moderado. | Seguimiento encubierto, predicción de culpabilidad o localización garantizada sin conexión. |
+| Fase | Alcance | Productos y módulos |
+|---|---|---|
+| MVP (semanas 1–4) | Pánico, Mapa Vivo y anti-robo básico en la app; acceso de emergencia, bloqueo remoto, sirena, bóveda y aviso a la PNP en la web. | M1, M2, M4 (sirena, bloqueo, fotos), M6; Misthy Web completa |
+| Piloto (semanas 5–8) | 50–100 usuarios vía 2–3 juntas vecinales de un sector; demo de Command con datos reales para la municipalidad. | Misthy Command (Monitor, Despachar, Reportes, Expedientes PNP), M7 |
+| Fase 2 | Funciones que requieren más investigación técnica o alianzas. | M3, M5, M8, Red Mesh de M4, Analítica predictiva, integración formal con PNP |
 
-Los avisos de extorsión son privados por defecto y no se publican en el mapa. Revocar sesiones MISTHY no equivale a bloquear físicamente el teléfono. La plataforma admite reportes sin adjuntos; no obliga a la víctima a reunir pruebas para pedir apoyo. La información pública se minimiza y nunca se presenta como garantía de seguridad de una zona.
+Reglas que se mantienen en todas las fases: los reportes de extorsión son privados por defecto y nunca se publican en el mapa; el ciudadano puede pedir ayuda sin adjuntar pruebas; ninguna orden remota se muestra como ejecutada sin confirmación del dispositivo; el mapa nunca se presenta como garantía de que una zona es segura.
 
 <a id="lean"></a>
 ### 1.2.2. Lean UX Process
 
-Se aplica Lean UX como proceso de aprendizaje: declarar supuestos, escoger los de mayor riesgo, probarlos con entrevistas y tareas controladas y ajustar el alcance. A continuación se documenta una propuesta inicial, no resultados de experimentos.
+Se aplica Lean UX como ciclo de aprendizaje: declarar supuestos, escoger los de mayor riesgo, probarlos con entrevistas y con los prototipos del capítulo IV, y ajustar el alcance. Lo que sigue es la propuesta inicial; los resultados se registrarán en el piloto.
 
 <a id="problem-statement"></a>
 #### 1.2.2.1. Lean UX Problem Statement
 
-El ámbito de seguridad ciudadana y apoyo posterior a incidentes en Perú dispone de canales de denuncia y herramientas de localización o comunicación. La hipótesis de brecha de MISTHY es que las personas afectadas y quienes coordinan apoyo local todavía necesitan continuidad entre solicitar ayuda, organizar información privada y conocer las actuaciones realizadas, incluso cuando se pierde el dispositivo habitual. MISTHY abordará esa brecha mediante un registro privado de incidentes, una red de confianza y una cronología compartida con acceso limitado. El foco inicial serán adultos de un sector de Villa El Salvador y responsables de organizaciones locales participantes. Se considerará que la propuesta obtiene señales de éxito cuando, en un piloto de 60 días, al menos 40 de 50 participantes invitados activen su red de apoyo, 8 de 10 personas completen las tareas de recuperación evaluadas y 2 organizaciones acepten continuar un piloto tras probar la coordinación. Estas metas son objetivos de validación, no resultados observados ni garantías de protección.
+Los servicios de seguridad ciudadana en Lima ofrecen canales de denuncia y existen herramientas para localizar teléfonos, pero no conectan al ciudadano con su red, con el serenazgo y con la comisaría en el momento del incidente ni después. Hemos observado que, cuando a una persona le roban el celular o la amenazan, pierde su canal para pedir ayuda, su información queda expuesta o dispersa y no sabe si alguien está atendiendo su caso. MISTHY abordará esta brecha con una app de protección personal, una web de recuperación accesible desde cualquier navegador y un panel de monitoreo y despacho para municipalidades. El foco inicial son adultos de un sector de Villa El Salvador, los operadores de serenazgo y las juntas vecinales del sector. Sabremos que vamos por buen camino si, en un piloto de 60 días, al menos 40 de 50 participantes configuran su Llave Misthy y un contacto aceptado, 8 de 10 completan el bloqueo remoto desde un navegador prestado en 3 minutos o menos y una municipalidad acepta continuar con Misthy Command.
 
 <a id="assumptions"></a>
 #### 1.2.2.2. Lean UX Assumptions
 
 | Tipo | ID | Creencia por validar |
 |---|---|---|
-| Business | BA01 | Existe interés en una herramienta local que dé continuidad a alertas y gestiones. |
-| Business | BA02 | Una organización vecinal o un pequeño negocio puede financiar herramientas de coordinación sin cobrar por el acceso esencial de la víctima. |
-| Business | BA03 | Un único desarrollador puede sostener un MVP web acotado; una central humana permanente requeriría recursos adicionales. |
-| Business Outcome | BO01 | La activación de contactos de confianza favorece el uso recurrente del producto. |
-| Business Outcome | BO02 | Una cronología comprensible aumenta la intención de continuidad de organizaciones piloto. |
-| Business Outcome | BO03 | Una recuperación de acceso exitosa aumenta la confianza en el servicio. |
-| User | UA01 | Los adultos participantes disponen de un navegador propio o prestado, aunque con diferentes habilidades digitales. |
-| User | UA02 | Los responsables locales necesitan separar avisos privados de información comunitaria publicable. |
-| User | UA03 | El miedo a represalias y la desconfianza pueden limitar el registro de extorsiones. |
-| User Outcome and Benefit | UO01 | Las personas valoran saber si alguien recibió una alerta y qué sigue pendiente. |
-| User Outcome and Benefit | UO02 | Las personas necesitan conservar su información sin divulgarla indiscriminadamente. |
-| User Outcome and Benefit | UO03 | Los coordinadores valoran reducir duplicidad y conservar responsables y fechas. |
+| Business | BA01 | Existe demanda de una herramienta local que una alerta, recuperación del celular y seguimiento con la autoridad. |
+| Business | BA02 | Las municipalidades pagarán por Misthy Command si reduce el tiempo de despacho del serenazgo. |
+| Business | BA03 | Juntas vecinales y universidades financiarán planes de organización sin cobrar a la víctima las funciones esenciales. |
+| Business Outcome | BO01 | Configurar Llave Misthy y contactos aumenta la retención de la app. |
+| Business Outcome | BO02 | Un monitor con severidad S1–S5 y despacho reduce el tiempo de respuesta y aumenta la intención de contratar. |
+| Business Outcome | BO03 | Una recuperación remota exitosa convierte usuarios Free en Misthy Pro. |
+| User | UA01 | Tras un robo, la persona consigue un navegador prestado (celular o PC) y recuerda su correo y su Llave Misthy. |
+| User | UA02 | Los operadores de serenazgo necesitan priorizar alertas por severidad y ver la evidencia junto al mapa. |
+| User | UA03 | El miedo a represalias limita reportar extorsiones si el reporte no es privado. |
+| User Outcome and Benefit | UO01 | La víctima valora saber que su orden de bloqueo se ejecutó y que sus contactos recibieron la alerta. |
+| User Outcome and Benefit | UO02 | La víctima valora llegar a la comisaría con un expediente ordenado. |
+| User Outcome and Benefit | UO03 | Las supervisoras comunitarias valoran publicar solo reportes verificados en el mapa. |
 | Feature | FA01 | Una red de confianza con aceptación explícita facilita preparar apoyo. |
-| Feature | FA02 | Una alerta con estado de entrega verificable permite comprender su alcance real. |
-| Feature | FA03 | Un registro privado de amenazas y adjuntos facilita ordenar información. |
-| Feature | FA04 | Una cronología con responsable, estado y referencia externa facilita seguimiento. |
-| Feature | FA05 | Una recuperación con LLAVE MISTHY y revocación de sesiones facilita recuperar control de la cuenta. |
-| Feature | FA06 | Una exportación privada con procedencia reduce el esfuerzo de preparar información para compartir. |
-| Feature | FA07 | Un mapa de avisos moderados y sin identidades ayuda a consultar el entorno. |
+| Feature | FA02 | Alertas de pánico con estado de entrega verificable dan confianza. |
+| Feature | FA03 | Un registro privado con adjuntos opcionales facilita ordenar amenazas y extorsiones. |
+| Feature | FA04 | Una cronología con responsable, estado y referencia externa facilita el seguimiento. |
+| Feature | FA05 | El acceso de emergencia con Llave Misthy y el bloqueo remoto permiten proteger el equipo desde otro dispositivo. |
+| Feature | FA06 | El expediente PDF con procedencia reduce el esfuerzo de denunciar ante la PNP. |
+| Feature | FA07 | Un Mapa Vivo con reportes verificados y alerta de zona roja ayuda a moverse con más información. |
+| Feature | FA08 | Un monitor con cola por severidad y despacho al sereno más cercano reduce el tiempo de respuesta. |
+| Feature | FA09 | Borrar o congelar la bóveda con 2FA protege documentos sensibles si desbloquean el equipo. |
+| Feature | FA10 | Modo Viaje Seguro, PIN de coacción y Falso Acompañante aumentan la sensación de control en trayectos de riesgo. |
+| Feature | FA11 | La Red Mesh y la detección de «jalón» mejoran la localización de equipos robados sin datos. |
+| Feature | FA12 | Puntos, badges y ranking vecinal aumentan la cantidad de reportes con evidencia. |
 
 <a id="hypotheses"></a>
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
-Una hipótesis por cada Feature Assumption; todos los umbrales son propuestas de prueba. Día 0 será la fecha de inicio del piloto una vez aprobado, no la fecha de este documento.
+Una hipótesis por cada Feature Assumption. Día 0 es el inicio del piloto. Los umbrales son metas de prueba.
 
 | ID / trazabilidad | Enunciado | Experimento y criterio propuesto |
 |---|---|---|
-| H01 / FA01, BO01, UA01, UO01 | Creemos que aumentará la activación si los ciudadanos preparan su apoyo con una red de contactos que aceptan participar. | Al día 30, ≥40/50 invitados tienen al menos un contacto aceptado; contar usuarios únicos. |
-| H02 / FA02, BO01, UA01, UO01 | Creemos que aumentará la confianza de uso si los ciudadanos distinguen envío, entrega y lectura mediante estados verificables. | Al día 45, ≥8/10 participantes interpretan correctamente tres estados en un simulacro sin ayuda del moderador. |
-| H03 / FA03, BO01, UA03, UO02 | Creemos que aumentará la utilidad percibida si los ciudadanos organizan amenazas con un registro privado y adjuntos opcionales. | Al día 45, ≥8/10 completan un caso ficticio en ≤5 min sin exponer datos; ≥8/10 comprenden quién puede consultarlo. |
-| H04 / FA04, BO02, UA02, UO03 | Creemos que aumentará la continuidad del piloto si los coordinadores conocen responsable y próxima actuación mediante una cronología de seguimiento. | Al día 60, ≥4/5 coordinadores completan una tarea de seguimiento; ≥2 organizaciones aceptan por escrito continuar evaluando. |
-| H05 / FA05, BO03, UA01, UO02 | Creemos que aumentará la confianza si los ciudadanos recuperan el control desde otro equipo mediante una llave y revocación de sesiones. | Al día 45, ≥8/10 completan el ejercicio en ≤3 min con llave disponible; registrar fallos y ausencia de llave por separado. |
-| H06 / FA06, BO02, UA02, UO02 | Creemos que aumentará la utilidad para los dos segmentos si preparan una copia ordenada mediante exportación con metadatos. | Al día 60, ≥8/10 participantes encuentran fecha, origen y estado de los datos en ≤2 min; sin medir admisibilidad judicial. |
-| H07 / FA07, BO01, UA01, UO01 | Creemos que mejorará la consulta responsable del entorno si los ciudadanos distinguen avisos moderados y antigüedad mediante un mapa sin identidades. | Al día 60, ≥8/10 interpretan correctamente la antigüedad y no confunden ausencia de avisos con ausencia de riesgo. |
+| H01 / FA01, BO01, UO01 | Creemos que aumentará la activación si los ciudadanos preparan una red de contactos que acepta participar. | Al día 30, ≥40/50 invitados tienen al menos un contacto aceptado. |
+| H02 / FA02, BO01, UO01 | Creemos que aumentará la confianza si el ciudadano distingue envío, entrega y lectura de su alerta de pánico. | Al día 45, ≥8/10 interpretan correctamente los estados en un simulacro. |
+| H03 / FA03, UA03 | Creemos que aumentarán los reportes de extorsión si el registro es privado y no exige pruebas. | Al día 45, ≥8/10 registran un caso ficticio en ≤5 min y entienden quién puede verlo. |
+| H04 / FA04, BO02 | Creemos que aumentará la continuidad si ciudadano y operador ven responsable y próxima actuación. | Al día 60, ≥4/5 operadores completan una tarea de seguimiento. |
+| H05 / FA05, BO03, UA01, UO01 | Creemos que Lucía recuperará el control si puede bloquear su celular desde un navegador prestado (UF1). | Al día 45, ≥8/10 completan el bloqueo en ≤3 min con el prototipo de Misthy Web. |
+| H06 / FA06, UO02 | Creemos que más víctimas iniciarán la denuncia si envían el expediente a la comisaría desde el panel (UF2). | Al día 60, ≥8/10 envían el expediente sin ayuda y encuentran fecha, origen y estado de cada evidencia. |
+| H07 / FA07, UO03 | Creemos que el ciudadano se informará mejor con un Mapa Vivo verificado que no confunde ausencia de reportes con ausencia de riesgo. | Al día 60, ≥8/10 interpretan bien antigüedad y nivel de una zona. |
+| H08 / FA08, BO02, UA02 | Creemos que el serenazgo responderá más rápido si Carlos ve la cola por severidad y despacha al sereno más cercano (UF4). | Al día 60, el tiempo mediano entre alerta S5 y despacho baja frente a la línea base medida en la semana 5. |
+| H09 / FA09, UO02 | Creemos que Lucía protegerá sus documentos si borra o congela la bóveda con 2FA (UF3). | Al día 45, ≥8/10 completan el borrado o congelamiento en ≤2 min sin borrar archivos por error. |
+| H10 / FA10 | Creemos que los usuarios se sentirán más seguros en trayectos si usan Viaje Seguro, PIN de coacción o Falso Acompañante. | En fase 2, ≥60 % de quienes prueben un módulo lo usan de nuevo en 30 días. |
+| H11 / FA11 | Creemos que se localizarán más equipos sin datos si la Red Mesh retransmite su señal. | En fase 2, prueba de campo con equipos de prueba: porcentaje de equipos ubicados en 24 h con y sin Mesh. |
+| H12 / FA12, UO03 | Creemos que aumentarán los reportes con evidencia si la comunidad recibe puntos y badges al ser verificada (UF5). | Al día 60, la proporción de reportes con evidencia verificada supera la de la semana 5. |
 
-Una muestra pequeña proporciona aprendizaje cualitativo, no inferencia representativa sobre todo Perú. Para cada prueba se registra numerador, denominador, abandonos, permisos y contexto. Cero participantes significa «sin datos», nunca 0 % de éxito.
+Con muestras pequeñas el aprendizaje es cualitativo. Para cada prueba se registra numerador, denominador, abandonos y contexto; cero participantes significa «sin datos», no 0 %.
 
 <a id="canvas"></a>
 #### 1.2.2.4. Lean UX Canvas
 
-| Bloque | Contenido de trabajo |
+| Bloque | Contenido |
 |---|---|
-| 1. Business problem | Falta de continuidad y visibilidad entre alerta, registro privado y seguimiento de gestiones. |
-| 2. Business outcomes | Activación, comprensión del servicio e intención de continuidad del piloto; H01–H07. |
-| 3. Users | S1: ciudadanos adultos. S2: responsables de coordinación local. |
-| 4. User outcomes and benefits | Preparar apoyo, reducir incertidumbre, conservar privacidad y organizar actuaciones. |
-| 5. Solutions | Red de confianza, alertas trazables, registro privado, cronología, recuperación, exportación y mapa moderado. |
-| 6. Hypotheses | H01–H07, cada una vinculada a un supuesto de funcionalidad. |
-| 7. Most important thing to learn first | Si las personas confían en registrar información sensible y entienden que MISTHY no equivale a una denuncia formal ni garantiza respuesta oficial. |
-| 8. Least work to learn | Entrevistas semiestructuradas con 3–5 personas por segmento y pruebas con casos ficticios; luego un prototipo de registro/seguimiento. Sin datos reales de víctimas para demostraciones públicas. |
+| 1. Business problem | Ciudadano, comunidad y autoridad local no están conectados durante ni después de un incidente; al perder el celular se pierde el canal de ayuda. |
+| 2. Business outcomes | Activación (Llave + contacto), conversión a Pro, contratos de Misthy Command, menor tiempo de despacho. H01–H12. |
+| 3. Users | Lucía Rojas (ciudadana), Carlos Mendoza (operador de serenazgo), Rosa Huamán (supervisora comunitaria). |
+| 4. User outcomes and benefits | Proteger el equipo y los documentos, avisar a su gente, llegar a la comisaría con evidencia, atender primero lo más grave, publicar solo información confiable. |
+| 5. Solutions | Misthy App (M1–M8), Misthy Web (acceso de emergencia y panel de recuperación) y Misthy Command (monitor, despacho, reportes, expedientes, analítica). |
+| 6. Hypotheses | H01–H12, cada una vinculada a un supuesto de funcionalidad. |
+| 7. Most important thing to learn first | Si Lucía puede bloquear su celular y avisar a la PNP desde un navegador prestado (UF1, UF2), y si Carlos despacha más rápido con la cola por severidad (UF4). |
+| 8. Least work to learn | Pruebas moderadas con los prototipos navegables de Figma (capítulo IV, 4.5) y entrevistas a 3–5 personas por persona objetivo; luego el MVP en un sector. |
 
 <a id="segmentos"></a>
 ## 1.3. Segmentos objetivo
 
-| Característica | S1 — Ciudadanos adultos | S2 — Responsables de coordinación local |
+| Característica | S1 — Ciudadanos (persona: Lucía Rojas) | S2 — Serenazgo y gestión municipal (personas: Carlos Mendoza y Rosa Huamán) |
 |---|---|---|
-| Delimitación inicial | Personas de 18 años o más que viven, trabajan o se desplazan por el sector piloto de VES. | Adultos con responsabilidad verificable de coordinar apoyo en una junta vecinal, asociación o pequeño negocio del sector. |
-| Diversidad a incluir | Distintos géneros, ocupaciones, habilidades digitales y condiciones de accesibilidad; no se presupone un nivel de ingresos. | Coordinadores con diferentes recursos, horarios y experiencia digital; se distingue usuario operativo de comprador. |
-| Necesidad hipotética | Pedir apoyo, conservar información y entender seguimiento sin perder privacidad. | Recibir información suficiente, asignar responsables y evitar pérdida de continuidad. |
-| Contexto de uso | Teléfono propio, navegador prestado o PC; conectividad variable. | PC o teléfono; coordinación durante horarios acordados, sin asumir atención 24/7. |
-| Comprador posible | Persona interesada en funciones adicionales; funciones esenciales no condicionadas al pago. | Organización que acepta un piloto y eventualmente contrata coordinación. |
-| Sustento y límite | R1 y R2 documentan el contexto nacional; no demuestran demanda ni tamaño de mercado local. | R3–R5 justifican investigar atención y confianza; no cuantifican organizaciones disponibles ni intención de compra. |
+| Delimitación | Adultos de 18 años o más que viven, trabajan o se desplazan por el sector piloto de VES. | Operadores de central de serenazgo, supervisores de gestión comunitaria y enlaces con la PNP de la municipalidad; incluye coordinadores de juntas vecinales. |
+| Necesidad | Pedir ayuda, proteger su celular y sus documentos, y denunciar con evidencia aunque le hayan robado el teléfono. | Priorizar alertas, despachar serenos, verificar reportes y entregar expedientes a la comisaría. |
+| Contexto de uso | App en su celular; Misthy Web desde un celular prestado o una PC; conectividad variable. | Misthy Command en PC de central, turnos largos, monitores grandes. |
+| Comprador | Ciudadano (Misthy Pro) o su organización (junta, universidad). | Municipalidad (Misthy Command), junta vecinal o condominio (plan Organizaciones). |
+| Sustento | R1 y R2 dimensionan victimización y robo de celulares. | R3–R5 justifican mejorar atención, coordinación y confianza. |
 
-Se selecciona VES para mantener el trabajo de campo acotado a Lima, donde reside el fundador. La elección es operativa, no una afirmación de que sea el distrito con más delitos. Municipalidades, universidades, transportistas y escuelas son posibles expansiones; no se mezclan con los dos segmentos del primer estudio. Menores de edad quedan fuera del reclutamiento inicial.
+Se elige VES por sus sectores numerados (cobertura por cuadrantes), sus juntas vecinales organizadas y su tradición de participación vecinal. Universidades, transportistas y otras municipalidades son expansiones posteriores. Menores de edad quedan fuera del piloto.
 
 <a id="referencias"></a>
 ## Referencias y evidencia pendiente
 
-Referencias consultadas el 9 de octubre de 2026. Los antecedentes periodísticos están atribuidos y no se usan como sentencia judicial.
+Referencias consultadas el 9 de octubre de 2026.
 
-- **R1.** Instituto Nacional de Estadística e Informática. (2026, febrero). *Estadísticas de seguridad ciudadana: julio–diciembre 2025* (gráfico 1 y notas metodológicas, p. 1). https://www.inei.gob.pe/media/MenuRecursivo/boletines/seguridad_ciudadana_jul_dic_2025.pdf
+- **R1.** Instituto Nacional de Estadística e Informática. (2026, febrero). *Estadísticas de seguridad ciudadana: julio–diciembre 2025*. https://www.inei.gob.pe/media/MenuRecursivo/boletines/seguridad_ciudadana_jul_dic_2025.pdf
 - **R2.** OSIPTEL. (2026, 15 de enero). *Robos de celulares disminuyeron en 2025, ¿cuánto se reportó ante las empresas operadoras?* https://www.osiptel.gob.pe/portal-del-usuario/noticias/robos-de-celulares-disminuyeron-en-2025-cu%C3%A1nto-se-report%C3%B3-ante-las-empresas-operadoras/
 - **R3.** Defensoría del Pueblo. (2024, 18 de octubre). *Defensoría del Pueblo supervisa operatividad de línea telefónica implementada por PNP para casos de extorsiones* (Nota 268/2024). https://www.defensoria.gob.pe/wp-content/uploads/2024/10/NP-268-2024.pdf
 - **R4.** Defensoría del Pueblo. (2025, marzo). *Nota de prensa 055/2025: Extorsión a instituciones educativas privadas*. https://www.defensoria.gob.pe/wp-content/uploads/2025/03/NP-055-2025-Extorsi%C3%B3n-a-instituciones-educativas-privadas.pdf
-- **R5.** Instituto Nacional de Estadística e Informática. (2026, febrero). *Perú: Percepción ciudadana sobre gobernabilidad, democracia y confianza en las instituciones. Julio–diciembre 2025* (cuadro 3, p. 6). https://www.inei.gob.pe/media/MenuRecursivo/boletines/boletin_gobernabilidad_julio_diciembre2025.pdf
-- **R6.** Silva, K. (2026, 9 de octubre; fecha de la audiencia descrita). *Liceo Naval: Hoy realizan audiencia por presunta agresión sexual*. América Noticias. https://www.americatv.com.pe/noticias/actualidad/liceo-naval-hoy-realizan-audiencia-presunta-agresion-sexual-n523353
+- **R5.** Instituto Nacional de Estadística e Informática. (2026, febrero). *Perú: Percepción ciudadana sobre gobernabilidad, democracia y confianza en las instituciones. Julio–diciembre 2025*. https://www.inei.gob.pe/media/MenuRecursivo/boletines/boletin_gobernabilidad_julio_diciembre2025.pdf
+- **R6.** Silva, K. (2026, 9 de octubre). *Liceo Naval: Hoy realizan audiencia por presunta agresión sexual*. América Noticias. https://www.americatv.com.pe/noticias/actualidad/liceo-naval-hoy-realizan-audiencia-presunta-agresion-sexual-n523353
 - **R7.** Zagaceta, J., y Llanos, K. (2026, 8 de octubre). *Alumno de Liceo Naval fue agredido en las duchas de Maranguita por su propio compañero*. Perú21. https://peru21.pe/policiales/alumno-de-liceo-naval-fue-agredido-en-las-duchas-de-maranguita-por-su-propio-companero/
 - **R8.** Defensoría del Pueblo. (2026, 17 de septiembre). *Defensoría del Pueblo solicita atención integral para adolescente víctima de violencia en la Institución Educativa Liceo Naval*. https://www.defensoria.gob.pe/defensoria-del-pueblo-solicita-atencion-integral-para-adolescente-victima-de-violencia-en-la-institucion-educativa-liceo-naval/
-- **R9.** Universidad Peruana de Ciencias Aplicadas. (2026). *1ASI0730 Aplicaciones Web: Enunciado del trabajo final, v1*. Archivo aportado por el autor; pp. 5 y 8–15 utilizadas únicamente como referencia metodológica.
+- **R9.** Universidad Peruana de Ciencias Aplicadas. (2026). *1ASI0730 Aplicaciones Web: Enunciado del trabajo final, v1*. Usado solo como referencia de estructura.
 
-**Pendientes reales:** seleccionar sector y organización piloto; realizar entrevistas; validar hipótesis, costos y capacidad operativa; revisar privacidad y seguridad antes de recibir incidentes reales. No son tareas declaradas como realizadas.
+**Pendientes:** confirmar sector y juntas vecinales del piloto, ejecutar entrevistas, probar los prototipos del capítulo IV con usuarios, validar precios y firmar acuerdos con la municipalidad y la comisaría del sector.
