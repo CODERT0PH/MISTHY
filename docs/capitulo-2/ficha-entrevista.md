@@ -1,11 +1,12 @@
 # Ficha de entrevista — MISTHY
 
 **Responsable:** Christoper Steven Rivas Castillo — CODERT0PH.
+**Persona objetivo:** Lucía (ciudadana) · Carlos (operador de serenazgo) · Rosa (supervisora comunitaria).
 **Estado de esta ficha:** plantilla vacía, no entrevista realizada.
 
 | Campo | Registro |
 |---|---|
-| Código y segmento | Por completar |
+| Código y persona objetivo (CIU, OPE, SUP) | Por completar |
 | Fecha, duración y entrevistador | Por completar |
 | Consentimiento para participar | Por completar |
 | Consentimiento separado para grabar | Por completar |

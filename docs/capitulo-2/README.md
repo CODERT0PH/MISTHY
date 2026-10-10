@@ -1,10 +1,10 @@
 # Capítulo II: Requirements Elicitation & Analysis
 
-**Autor:** Christoper Steven Rivas Castillo — **CODERT0PH**. **Proyecto personal:** MISTHY. **Versión:** 0.1.0. **Fecha:** 9 de octubre de 2026.
+**Autor:** Christoper Steven Rivas Castillo — [CODERT0PH](https://github.com/CODERT0PH). **Proyecto personal:** MISTHY. **Versión:** 0.2.0. **Fecha:** 10 de octubre de 2026.
 
-[Capítulo I](https://github.com/CODERT0PH/MISTHY-/blob/feature-capitulo1/docs/capitulo-1/README.md) · [Capítulo III](https://github.com/CODERT0PH/MISTHY-/blob/feature-capitulo3/docs/capitulo-3/README.md)
+[Capítulo I](../capitulo-1/README.md) · [Capítulo III](../capitulo-3/README.md) · [Capítulo IV](../capitulo-4/README.md)
 
-Este capítulo distingue investigación documental, decisiones de producto e hipótesis de usuarios. No se han proporcionado entrevistas. Por tanto, no se presentan transcripciones, porcentajes, fotografías ni testimonios ficticios. El PDF universitario se usa como guía metodológica; no se afirma haber ejecutado talleres de equipo ni elaborado artefactos en UXPressia o Figma.
+Este capítulo analiza la competencia, define cómo se entrevistará a los usuarios y modela a las personas, sus tareas y el dominio. Las **user personas** son las mismas que usa el capítulo IV en sus wireflows y user flows: **Lucía Rojas** (ciudadana), **Carlos Mendoza** (operador de serenazgo) y **Rosa Huamán** (supervisora de gestión comunitaria). Mientras no existan entrevistas registradas, se presentan como proto-personas: sus atributos se confirmarán o corregirán con el trabajo de campo de 2.2.
 
 ## Contenido
 
@@ -20,6 +20,7 @@ Este capítulo distingue investigación documental, decisiones de producto e hip
   - [2.3.2. User Task Matrix](#task-matrix)
   - [2.3.3. User Journey Mapping](#journeys)
   - [2.3.4. Empathy Mapping](#empathy)
+  - [2.3.5. User Goals](#user-goals)
 - [2.4. Big Picture EventStorming](#eventstorming)
 - [2.5. Ubiquitous Language](#lenguaje)
 - [Referencias y validaciones pendientes](#referencias)
@@ -27,286 +28,325 @@ Este capítulo distingue investigación documental, decisiones de producto e hip
 <a id="competidores"></a>
 ## 2.1. Competidores
 
-Se comparan **Prey**, **Life360** y **Google Find Hub / Localizador** como alternativas parciales. Compiten en protección de dispositivos, redes personales o recuperación, pero no se presupone que su alcance incluya seguimiento de extorsiones en Perú. La oportunidad de MISTHY se formula como una hipótesis de continuidad entre apoyo, registro privado y seguimiento; no como exclusividad demostrada.
+Se comparan **Prey**, **Life360** y **Google Find Hub / Localizador**. Cada uno cubre una parte de lo que hace MISTHY (protección del dispositivo, círculo familiar o localización), pero ninguno conecta al ciudadano con el serenazgo y la comisaría de su sector ni ofrece un panel para la municipalidad.
 
 <a id="analisis-competitivo"></a>
 ### 2.1.1. Análisis competitivo
 
-**Pregunta:** ¿qué valor puede aportar MISTHY a una persona y a un coordinador local que ya disponen de herramientas para localizar dispositivos o compartir ubicación?
+**Pregunta:** ¿qué valor aporta MISTHY a Lucía, que ya puede localizar su teléfono con Google, y a la municipalidad de Carlos y Rosa, que ya recibe llamadas al serenazgo?
 
-| Dimensión | MISTHY — propuesta | Prey [C1, C2] | Life360 [C3, C4] | Google Find Hub [C5] |
+| Dimensión | MISTHY | Prey [C1, C2] | Life360 [C3, C4] | Google Find Hub [C5] |
 |---|---|---|---|---|
-| Overview | Registro privado de incidentes, apoyo y seguimiento local. | Protección y gestión remota de dispositivos. | Coordinación y ubicación entre círculos personales. | Localización y protección de dispositivos Android. |
-| Valor principal | Continuidad del caso y claridad sobre actuaciones. | Ubicación, reportes de pérdida y acciones remotas. | Ubicación compartida y alertas SOS a contactos. | Encontrar, hacer sonar, marcar como perdido o borrar un dispositivo compatible. |
-| Mercado objetivo | Adultos y responsables de organizaciones locales; piloto VES. | Personas, empresas y educación. | Familias y círculos de confianza. | Usuarios del ecosistema Android. |
-| Marketing observado | Por validar: demostraciones a organizaciones y contenido educativo del fundador. | Sitio comercial, comparación de planes y demostraciones. | Sitio de planes con beneficios familiares. | Ayuda oficial e integración con la cuenta Google. |
-| Productos y servicios | Web adaptable, recuperación de cuenta y Command; app futura. | Seguimiento, alarma y bloqueo según plan y sistema operativo. | Historial, avisos de lugares y SOS según plan y disponibilidad. | Aplicación y acceso desde navegador; ubicación reciente o última conocida. |
-| Precios y costos | Freemium y suscripción organizacional por validar. | Starter anunciado a USD 2.99/mes para cinco dispositivos; impuestos aparte. | Planes Free, Silver y Gold; no se confirma una tarifa local para Perú. | La página de soporte consultada no especifica una suscripción; no se infiere precio de hardware. |
-| Distribución | Web; móvil en evolución futura. | Agente instalado y panel remoto. | Aplicaciones móviles. | Web y aplicación Android. |
+| Overview | Seguridad ciudadana 360°: app (M1–M8), Misthy Web para recuperar el equipo y Misthy Command para el serenazgo. | Protección y gestión remota de dispositivos. | Ubicación compartida y alertas en círculos familiares. | Localización y protección de dispositivos Android. |
+| Valor principal | Del robo a la comisaría: bloquear, ubicar, proteger la bóveda, avisar a contactos y enviar el expediente a la PNP; despacho del sereno más cercano. | Ubicación, reportes de pérdida y acciones remotas. | Ubicación compartida y SOS a contactos. | Encontrar, hacer sonar, bloquear o borrar un dispositivo compatible. |
+| Mercado objetivo | Ciudadanos de Lima (piloto VES), juntas vecinales, universidades y municipalidades. | Personas, empresas y educación. | Familias. | Usuarios de Android. |
+| Marketing | Landing `misthy.pe` con rutas por audiencia, demos a municipalidades y contenido educativo del fundador. | Sitio comercial y demos. | Sitio de planes con beneficios familiares. | Ayuda oficial integrada a la cuenta Google. |
+| Productos y servicios | Mapa Vivo, Pánico, Viaje Seguro, Anti-Robo con Red Mesh, PIN de Coacción, Bóveda, Comunidad, Falso Acompañante; panel de recuperación web; monitor, despacho, reportes, expedientes y analítica. | Seguimiento, alarma y bloqueo según plan. | Historial, avisos de lugares y SOS según plan. | App y web; ubicación reciente o última conocida. |
+| Precios | Free / Pro S/ 9.90–14.90; Organizaciones S/ 150–3 000; Command S/ 4 500–8 500 por distrito (referenciales). | Starter USD 2.99/mes para cinco dispositivos. | Free, Silver y Gold. | Sin suscripción. |
+| Distribución | App móvil, web y panel B2G. | Agente instalado y panel. | Apps móviles. | Web y app Android. |
 
-Precios y características consultados el 09/10/2026; pueden cambiar. Las capacidades de un competidor no son permisos disponibles automáticamente para MISTHY. No se afirma disponibilidad de despacho de emergencia de Life360 en Perú. Los logos no se recrean ni se presentan como propios; la comparación utiliza los nombres y enlaces oficiales.
+Precios consultados el 09/10/2026; pueden cambiar. No se afirma que Life360 ofrezca despacho de emergencia en Perú.
 
-#### SWOT — interpretación de producto
+#### SWOT
 
-El siguiente análisis es una inferencia del autor a partir del alcance documentado y de la propuesta MISTHY, no información interna de las empresas.
+Inferencia del autor a partir de la información pública de cada producto.
 
 | Factor | MISTHY | Prey | Life360 | Google Find Hub |
 |---|---|---|---|---|
-| Fortalezas | Enfoque local y trazabilidad diseñada alrededor del incidente. | Especialización en dispositivos. | Experiencia centrada en círculos personales. | Integración con Android. |
-| Debilidades | Sin usuarios validados, convenios ni operación continua; un desarrollador. | Dependencia de instalación, conexión y capacidades del sistema. | Dependencia de participación del círculo y cobertura de funciones. | Dependencia del ecosistema, configuración y condiciones del equipo. |
-| Oportunidades | Organizaciones pequeñas que necesitan ordenar atención y seguimiento. | Demanda de protección de equipos. | Necesidad de coordinación familiar. | Extensión de recuperación dentro de su ecosistema. |
-| Amenazas | Filtraciones, falsas expectativas, falta de confianza y costos de operación. | Funciones integradas de los sistemas operativos. | Abandono por preocupaciones de privacidad. | Expectativas excesivas de recuperación y problemas de acceso a cuenta. |
+| Fortalezas | Enfoque local, conexión con serenazgo y PNP, recuperación desde navegador prestado, expediente probatorio. | Especialización en dispositivos. | Comunidad familiar grande. | Integración nativa con Android. |
+| Debilidades | Sin usuarios ni convenios aún; un solo desarrollador; límites del sistema operativo para anti-apagado. | Depende de instalación y conexión. | Depende de que el círculo participe. | Depende del ecosistema y de la cuenta Google. |
+| Oportunidades | Municipalidades con presupuesto de seguridad ciudadana; juntas vecinales organizadas; alta tasa de robo de celulares. | Demanda de protección de equipos. | Coordinación familiar. | Extensión de su red de búsqueda. |
+| Amenazas | Filtraciones de datos, falsas expectativas, competencia de funciones nativas del sistema. | Funciones nativas del sistema operativo. | Preocupaciones de privacidad. | Expectativas excesivas de recuperación. |
 
-El hallazgo documental es que **localizar un objeto, avisar a contactos y seguir un incidente son tareas diferentes**. La diferenciación propuesta debe comprobarse con usuarios; no basta con acumular funciones.
+Hallazgo: **localizar un objeto, avisar a contactos y lograr que la autoridad local actúe son tareas distintas**. MISTHY se diferencia al unirlas en un solo flujo.
 
 <a id="estrategias"></a>
 ### 2.1.2. Estrategias y tácticas frente a competidores
 
 | Estrategia | Táctica | Señal para decidir |
 |---|---|---|
-| Enfocarse en continuidad del incidente. | Probar registro privado, responsable y cronología antes de funciones antirrobo avanzadas. | Éxito y comprensión de tareas H03/H04 del capítulo I. |
-| Complementar herramientas existentes. | Explicar diferencia entre recuperar la cuenta MISTHY y bloquear un equipo; facilitar orientación verificable. | El participante identifica qué acción sí ejecuta MISTHY. |
-| Construir confianza con límites explícitos. | Mostrar pendiente, entregado y confirmado por separado; indicar origen y antigüedad. | Comprensión de estados en H02 y ausencia de afirmaciones falsas. |
-| Mantener acceso esencial. | No priorizar alertas por pago; validar ingresos con herramientas organizacionales. | Comprensión del modelo y aceptación de dos organizaciones. |
-| Reducir exposición. | Extorsiones privadas, acceso por consentimiento y exportación revisable. | No aparecen datos privados en mapas o accesos no autorizados. |
-| Empezar con capacidad real. | Un sector, horarios declarados y soporte acotado. | Carga de moderación y costo por usuario medidos antes de escalar. |
+| Ganar en el momento posterior al robo. | Misthy Web con acceso por Llave Misthy desde cualquier navegador y panel de recuperación (UF1–UF3). | H05 y H09 del capítulo I. |
+| Conectar con la autoridad local. | Misthy Command con cola por severidad, despacho y bandeja de expedientes (UF4, UF6). | H08 y contrato con una municipalidad. |
+| Construir confianza con estados honestos. | Mostrar «Solicitud enviada → Pendiente → Confirmado / No se pudo ejecutar» en cada orden remota. | H02 y H05. |
+| Diferenciarse en sin-conexión. | Red Mesh, última ubicación antes del apagado y kiosk con Llave Misthy. | H11 en fase 2. |
+| Comunidad con información confiable. | Reportes verificados por supervisoras y gamificación (UF5). | H07 y H12. |
+| Acceso esencial gratuito. | Pánico, acceso de emergencia, bloqueo y aviso a contactos en el plan Free. | Activación (H01) sin pago. |
 
 <a id="entrevistas"></a>
 ## 2.2. Entrevistas
 
-**Objetivo:** comprender cómo se pide apoyo y se da seguimiento hoy, qué barreras generan abandono y qué información se considera demasiado sensible para compartir. Se explora también la percepción de trato desigual sin inducir una respuesta ni afirmar que todos los agentes actúan igual.
+**Objetivo:** entender cómo reaccionan hoy las personas ante un robo o una amenaza, cómo las atiende el serenazgo y qué información necesita la comisaría, para validar a Lucía, Carlos y Rosa y priorizar el backlog.
 
 <a id="diseno-entrevistas"></a>
 ### 2.2.1. Diseño de entrevistas
 
-Muestreo intencional exploratorio: 3–5 adultos por segmento S1 y S2, inicialmente 6–10 entrevistas. No es una muestra representativa de Perú. Reclutar variedad de habilidades digitales y experiencias de coordinación; una misma persona no se cuenta dos veces en el total de participantes únicos. Si tiene dos roles, se etiqueta el rol analizado.
+Muestreo intencional: 3–5 personas por cada persona objetivo (ciudadanos; operadores de serenazgo; supervisores comunitarios o coordinadores de junta vecinal), entre 9 y 15 entrevistas. Duración de 25–35 minutos. Se explica la finalidad, se pide consentimiento y un permiso aparte para grabar. No se piden nombres de presuntos delincuentes, números privados ni detalles gráficos. No se entrevista a personas en una emergencia activa.
 
-Duración orientativa: 25–35 minutos. Explicar finalidad, voluntariedad, uso de datos y posibilidad de omitir preguntas. Solicitar permiso específico para grabar. No pedir nombres de presuntos delincuentes, números privados, detalles gráficos ni copias de amenazas reales. Evitar reclutar personas en una emergencia activa. La investigación no constituye asesoría ni un canal de atención.
-
-| Bloque común | Pregunta principal | Profundización no inductiva | Dato buscado |
+| Bloque común | Pregunta principal | Profundización | Dato buscado |
 |---|---|---|---|
-| Contexto | ¿Cómo es una semana habitual de trabajo o estudio para ti? | ¿Por qué zonas te desplazas y con qué frecuencia? | Rol, movilidad y contexto. |
-| Tecnología | ¿Qué dispositivos utilizas para comunicarte? | ¿Qué navegador, conectividad o dificultad de lectura encuentras? | Dispositivo, canal, accesibilidad. |
-| Apoyo | ¿A quién recurres cuando necesitas ayuda? | ¿Cómo acuerdan que esa persona puede participar? | Red real y consentimiento. |
-| Confianza | ¿Qué te ayuda a confiar en un servicio que guarda información personal? | ¿Qué información preferirías no registrar y por qué? | Límites y expectativas. |
-| Influencias | ¿Qué medios o personas consultas para decidir qué herramienta usar? | ¿Hay servicios que hayas dejado de utilizar? | Influencias y experiencias. |
+| Contexto | ¿Cómo es una semana habitual de trabajo o estudio para ti? | ¿Por qué zonas te desplazas y a qué horas? | Rol, movilidad, horarios. |
+| Tecnología | ¿Qué dispositivos usas? | ¿Usas smartwatch? ¿Qué conectividad tienes? | Dispositivos y accesibilidad. |
+| Apoyo | ¿A quién recurres cuando necesitas ayuda? | ¿Esa persona sabe que puede recibir tus alertas? | Red de confianza. |
+| Confianza | ¿Qué te haría confiar en una app que guarda tu ubicación y documentos? | ¿Qué no registrarías nunca? | Límites de privacidad. |
 
-**Guion S1 — Ciudadano adulto**
-
-| ID | Pregunta principal | Complementaria |
-|---|---|---|
-| Q1 | Sin entrar en detalles que te incomoden, ¿recuerdas una situación en que necesitaste apoyo por inseguridad? | ¿Qué hiciste primero y por qué? |
-| Q2 | ¿Cómo supiste si tu solicitud llegó a alguien? | ¿Qué hiciste cuando no recibiste respuesta? |
-| Q3 | ¿Dónde guardaste fechas, mensajes o constancias? | ¿Pudiste encontrarlos cuando los necesitaste? |
-| Q4 | ¿Cómo seguiste las gestiones después de pedir ayuda? | ¿Qué información faltaba o era difícil de entender? |
-| Q5 | ¿Qué dificultades encontraste al buscar atención? | ¿Influyeron tiempo, dinero, traslado, idioma o acceso a orientación? |
-| Q6 | ¿Qué hace que una persona decida no reportar una amenaza? | ¿Cómo influye el temor a que se conozca su identidad? |
-| Q7 | Si pierdes acceso al celular, ¿qué alternativas tienes para comunicarte? | ¿Tienes acceso a otro equipo o recuerdas tus credenciales? |
-| Q8 | ¿Qué diferencia esperas entre enviar una alerta y presentar una denuncia formal? | ¿Cómo te gustaría reconocer quién recibió cada una? |
-| Q9 | ¿Qué resultado te haría considerar útil una herramienta de apoyo? | ¿Qué no debería prometerte? |
-
-**Guion S2 — Responsable local**
+**Guion para ciudadanos (Lucía)**
 
 | ID | Pregunta principal | Complementaria |
 |---|---|---|
-| Q10 | ¿Cómo llega actualmente un aviso a tu organización? | ¿Qué canales y horarios atienden realmente? |
-| Q11 | ¿Qué información necesitas para decidir la siguiente acción? | ¿Qué haces si falta información o el aviso es duplicado? |
-| Q12 | ¿Cómo asignan una persona responsable? | ¿Cómo transfieren el seguimiento entre turnos? |
-| Q13 | ¿Cómo distinguen una solicitud recibida de una acción realizada? | ¿Dónde queda constancia y quién puede corregirla? |
-| Q14 | ¿Qué información comparten con terceros? | ¿Cómo obtienen permiso y evitan divulgar identidades? |
-| Q15 | ¿Qué hacen cuando una solicitud sigue sin respuesta? | ¿Quién decide el escalamiento y qué canales verifican? |
-| Q16 | ¿Cómo podría evaluar tu organización una herramienta nueva? | ¿Quién decide, qué presupuesto existe y qué evidencia necesitaría? |
-| Q17 | ¿Qué reglas utilizan para priorizar solicitudes? | ¿Qué controles evitarían un trato distinto por pago o relación personal? |
+| Q1 | ¿Te han robado el celular o conoces a alguien a quien le pasó? Sin detalles que te incomoden, ¿qué hicieron primero? | ¿Desde qué equipo pidieron ayuda? |
+| Q2 | ¿Pudieron bloquear el equipo o proteger sus cuentas y documentos? | ¿Qué les impidió hacerlo? |
+| Q3 | ¿Cómo supieron si alguien recibió su pedido de ayuda? | ¿Qué hicieron si no hubo respuesta? |
+| Q4 | ¿Fueron a la comisaría? ¿Qué les pidieron? | ¿Tenían ubicación, fotos o fechas para mostrar? |
+| Q5 | ¿Qué te hace sentir inseguro en un taxi, mototaxi o caminando de noche? | ¿Qué haces hoy para protegerte (compartir ubicación, llamar a alguien)? |
+| Q6 | Si alguien te obliga a desbloquear tu celular, ¿qué crees que debería pasar? | ¿Usarías un PIN falso que alerte en silencio? |
+| Q7 | ¿Qué hace que una persona decida no reportar una amenaza o extorsión? | ¿Cómo influye que se conozca su identidad? |
+| Q8 | ¿Consultarías un mapa de zonas con robos verificados? | ¿Qué dato te haría confiar en él? |
+| Q9 | ¿Qué resultado haría útil una app así? ¿Qué no debería prometerte? | ¿Pagarías por funciones extra? |
 
-Al cierre: resumir lo comprendido, preguntar si se interpretó correctamente y solicitar permiso separado para un contacto posterior. Edad exacta, género, estado civil y situación familiar son opcionales y solo se recogen si aportan a la investigación. En la publicación se usan códigos y rangos, no datos que permitan identificar a una víctima.
+**Guion para serenazgo y gestión comunitaria (Carlos y Rosa)**
+
+| ID | Pregunta principal | Complementaria |
+|---|---|---|
+| Q10 | ¿Cómo llega hoy una alerta a la central? | ¿Por qué canales y en qué horarios? |
+| Q11 | ¿Cómo deciden qué alerta atender primero? | ¿Usan algún nivel de severidad? |
+| Q12 | ¿Cómo eligen y avisan al sereno que va al lugar? | ¿Cómo saben dónde está cada unidad? |
+| Q13 | ¿Cómo registran que la unidad llegó y cerró el caso? | ¿Dónde queda la constancia? |
+| Q14 | ¿Cómo coordinan con la comisaría del sector? | ¿Qué información pide la PNP para iniciar una denuncia? |
+| Q15 | ¿Reciben reportes de vecinos? ¿Cómo verifican si son reales? | ¿Qué hacen con los duplicados o falsos? |
+| Q16 | ¿Qué indicadores reporta la central a la gerencia? | ¿Por hora, zona o tipo de delito? |
+| Q17 | ¿Cómo evaluaría la municipalidad una herramienta nueva? | ¿Quién decide y con qué presupuesto? |
+
+Al cierre se resume lo entendido, se pregunta si es correcto y se pide permiso separado para un contacto posterior. En la publicación se usan códigos y rangos, no datos que identifiquen a una persona.
 
 <a id="registro-entrevistas"></a>
 ### 2.2.2. Registro de entrevistas
 
-**Entrevistas realizadas y aportadas a esta versión: 0.** La siguiente tabla es el registro de reclutamiento previsto, no evidencia de ejecución.
+**Entrevistas realizadas en esta versión: 0.** La tabla es el plan de reclutamiento.
 
-| Código | Segmento | Estado | Fecha / duración | Evidencia consentida | Resumen |
+| Código | Persona objetivo | Estado | Fecha / duración | Evidencia consentida | Resumen |
 |---|---|---|---|---|---|
-| S1-01 | Ciudadano | Por reclutar | No disponible | No disponible | Sin datos |
-| S1-02 | Ciudadano | Por reclutar | No disponible | No disponible | Sin datos |
-| S1-03 | Ciudadano | Por reclutar | No disponible | No disponible | Sin datos |
-| S2-01 | Coordinador | Por reclutar | No disponible | No disponible | Sin datos |
-| S2-02 | Coordinador | Por reclutar | No disponible | No disponible | Sin datos |
-| S2-03 | Coordinador | Por reclutar | No disponible | No disponible | Sin datos |
+| CIU-01 | Lucía (ciudadana) | Por reclutar | — | — | — |
+| CIU-02 | Lucía (ciudadana) | Por reclutar | — | — | — |
+| CIU-03 | Lucía (ciudadana) | Por reclutar | — | — | — |
+| OPE-01 | Carlos (operador de serenazgo) | Por reclutar | — | — | — |
+| OPE-02 | Carlos (operador de serenazgo) | Por reclutar | — | — | — |
+| SUP-01 | Rosa (supervisora comunitaria / junta vecinal) | Por reclutar | — | — | — |
+| SUP-02 | Rosa (supervisora comunitaria / junta vecinal) | Por reclutar | — | — | — |
 
-Para cada entrevista se registrará: código, segmento, fecha, consentimiento, perfil pertinente, contexto, tareas narradas, obstáculos, dispositivos/canales, objetivos, frustraciones, citas autorizadas con minuto, interpretación del investigador y observaciones contradictorias. Grabaciones e identidades se conservan en almacenamiento privado; no se suben automáticamente al repositorio público. Se adjunta una [ficha reutilizable](ficha-entrevista.md).
+Cada entrevista se registra con la [ficha de entrevista](ficha-entrevista.md). Grabaciones e identidades se guardan en almacenamiento privado, fuera del repositorio.
 
 <a id="analisis-entrevistas"></a>
 ### 2.2.3. Análisis de entrevistas
 
-Procedimiento previsto: transcribir o resumir con marcas de tiempo; codificar por tema; agrupar por segmento; buscar coincidencias y casos negativos; revisar interpretaciones con el participante cuando sea posible; actualizar personas y requisitos.
+Se transcribe con marcas de tiempo, se codifica por tema, se agrupa por persona objetivo, se buscan coincidencias y casos que contradicen las hipótesis, y se actualizan personas y requisitos.
 
-| Código temático | Definición operacional | Evidencia necesaria | Requisito candidato |
-|---|---|---|---|
-| N01 — Continuidad | Dificultad narrada para conocer la próxima acción o responsable. | Relato y momento donde se interrumpe el seguimiento. | Cronología y responsable. |
-| N02 — Privacidad | Reticencia a revelar información por exposición o represalias. | Preferencias expresas y contexto. | Registro privado y permisos. |
-| N03 — Acceso | Pérdida de acceso al teléfono o credenciales. | Alternativas utilizadas y barreras. | Recuperación desde otro dispositivo. |
-| N04 — Comprensión | Confusión entre envío, recepción y actuación. | Explicación del participante. | Estados diferenciados. |
-| N05 — Equidad | Obstáculos vinculados a recursos, trato, tiempo o contactos. | Experiencia atribuida sin generalizar a toda una institución. | Funciones esenciales gratuitas y prioridad por riesgo. |
-| N06 — Organización | Información dispersa o duplicada. | Ejemplos anonimizados del proceso. | Registro unificado, exportación y deduplicación. |
+| Código temático | Definición | Requisito candidato |
+|---|---|---|
+| N01 — Continuidad | No se sabe quién atiende ni cuál es el siguiente paso. | Cronología, responsable y estado del despacho. |
+| N02 — Privacidad | Reticencia a revelar información por exposición o represalias. | Registro privado, bóveda cifrada, permisos. |
+| N03 — Acceso | Pérdida del celular o de credenciales. | Acceso de emergencia con Llave Misthy, bloqueo remoto. |
+| N04 — Comprensión | Confusión entre enviado, recibido y ejecutado. | Estados honestos de órdenes y alertas. |
+| N05 — Equidad | Barreras por recursos, trato, tiempo o contactos. | Funciones esenciales gratuitas; prioridad por severidad, no por pago. |
+| N06 — Evidencia | Información dispersa al llegar a la comisaría. | Expediente probatorio PDF. |
+| N07 — Respuesta | Tiempo largo entre la alerta y la llegada del sereno. | Cola por severidad y despacho al más cercano. |
+| N08 — Prevención | Miedo en trayectos y zonas desconocidas. | Mapa Vivo, Viaje Seguro, Puntos Misthy, Falso Acompañante. |
 
-Para cada característica se informará `n/N × 100`, con N igual al número de respuestas válidas del segmento para esa pregunta, sin contar omisiones como respuestas negativas. Si N=0 se registra «sin datos». Las respuestas múltiples no tienen por qué sumar 100 %. Los porcentajes describirán únicamente la muestra entrevistada; hoy no hay porcentajes que reportar.
+Cada característica se reportará como `n/N × 100` sobre las respuestas válidas de cada grupo. Hoy no hay porcentajes que reportar.
 
 <a id="needfinding"></a>
 ## 2.3. Needfinding
 
-Los siguientes artefactos son **proto-personas y mapas hipotéticos** derivados de la visión del fundador y la investigación documental. Son material para contrastar, no hallazgos de entrevistas. Cada atributo deberá vincularse a códigos S1-xx/S2-xx antes de presentarse como validado.
-
 <a id="personas"></a>
-### 2.3.1. User Personas — versiones preliminares
+### 2.3.1. User Personas
 
-| Campo | P1 — Ciudadano que necesita continuidad | P2 — Responsable de coordinación local |
-|---|---|---|
-| Segmento | S1. | S2. |
-| Contexto | Adulto residente o usuario frecuente del sector piloto. | Adulto con rol de coordinación autorizado en una organización del sector. |
-| Objetivo | Pedir apoyo y conservar control de su información después de un incidente. | Saber qué solicitudes siguen pendientes y quién actúa sobre ellas. |
-| Tareas | Contactar a alguien, ordenar fechas, pedir orientación y seguir gestiones. | Recibir, aclarar, asignar, registrar actuaciones y comunicar avances. |
-| Frustraciones hipotéticas | Repetir el relato, desconocer el estado, perder el dispositivo o exponer su identidad. | Avisos incompletos, duplicados y traspasos sin contexto. |
-| Beneficio esperado | Claridad y privacidad, incluso con un equipo prestado. | Continuidad sin prometer una respuesta que no controla. |
-| Canales por validar | Llamadas, mensajería, navegador propio o prestado. | Mensajería, llamadas y registros administrativos. |
-| Accesibilidad | Verificar lectura, idioma, conectividad, destreza y tecnologías de apoyo. | Verificar carga de trabajo, tamaño de pantalla y necesidades de lectura. |
-| Datos no conocidos | Edad exacta, género, familia, ingresos, marcas, personalidad y biografía. | Edad exacta, organización, presupuesto, turnos y experiencia. |
-| Estado | Hipótesis; sin foto ni cita atribuida a persona real. | Hipótesis; sin foto ni cita atribuida a persona real. |
+Las tres personas del capítulo IV. Datos demográficos y citas se completarán con las entrevistas de 2.2.
+
+| Campo | Lucía Rojas — Ciudadana | Carlos Mendoza — Operador de serenazgo | Rosa Huamán — Supervisora de gestión comunitaria |
+|---|---|---|---|
+| Perfil | 32 años, vendedora en Villa El Salvador. Le robaron el celular al paso. | Operador en la central de serenazgo de la municipalidad. También actúa como enlace con la PNP. | Supervisora de gestión comunitaria de la municipalidad; trabaja con juntas vecinales. |
+| Producto principal | Misthy App y Misthy Web (desde un celular prestado). | Misthy Command (Monitor, Despachar, Expedientes PNP). | Misthy Command (Reportes, Analítica). |
+| Objetivos | Bloquear su celular, proteger su DNI y fotos, avisar a su familia y denunciar con evidencia. | Atender primero la alerta más grave y enviar al sereno más cercano; entregar expedientes completos a la comisaría. | Publicar solo reportes confiables en el mapa y mantener activa a la comunidad. |
+| Frustraciones | Sin celular no puede avisar a nadie; no sabe si el bloqueo funcionó; en la comisaría le piden pruebas que no tiene. | Alertas por llamada sin ubicación precisa; no sabe qué unidad está libre; registros en papel. | Reportes vecinales duplicados o falsos; vecinos que dejan de reportar. |
+| Motivaciones | Recuperar el control y sentirse acompañada. | Reducir el tiempo de respuesta y demostrar resultados. | Confianza de los vecinos y datos útiles para la gestión. |
+| Dispositivos | Android de gama media; a veces solo un navegador prestado. | PC de central con monitor grande; radio. | Laptop y celular. |
+| Accesibilidad | Bajo estrés: textos claros, un paso por pantalla, botones grandes. | Atajos de teclado y severidad legible sin depender del color. | Filtros y vistas comparativas. |
+| Flujos del capítulo IV | UF1, UF2, UF3 | UF4, UF6 | UF5 |
 
 <a id="task-matrix"></a>
 ### 2.3.2. User Task Matrix
 
-Se comparan tareas que existen sin MISTHY. Frecuencia: D diaria, S semanal, E ante un evento, V por validar. Importancia propuesta: A alta, M media. Todos los valores son estimaciones iniciales del investigador, no mediciones.
+Frecuencia: D diaria, S semanal, E ante un evento. Importancia: A alta, M media, B baja. Estimaciones iniciales a confirmar con las entrevistas.
 
-| Tarea | P1 frecuencia | P1 importancia | P2 frecuencia | P2 importancia |
-|---|---|---|---|---|
-| Identificar a quién pedir apoyo. | E | A | E | A |
-| Describir un incidente con fecha y lugar. | E | A | E | A |
-| Confirmar si alguien recibió la solicitud. | E | A | E | A |
-| Organizar mensajes y constancias. | E | A | V | A |
-| Asignar una persona responsable de seguimiento. | E | M | V | A |
-| Consultar qué gestión sigue pendiente. | E | A | V | A |
-| Compartir solo la información necesaria. | E | A | V | A |
-| Consultar avisos del entorno. | V | M | V | M |
+| Tarea | Lucía F | Lucía I | Carlos F | Carlos I | Rosa F | Rosa I |
+|---|---|---|---|---|---|---|
+| Pedir ayuda a contactos de confianza | E | A | — | — | — | — |
+| Bloquear o hacer sonar un celular robado | E | A | — | — | — | — |
+| Proteger documentos personales | E | A | — | — | — | — |
+| Presentar una denuncia con evidencia | E | A | S | A | — | — |
+| Consultar zonas de riesgo antes de un trayecto | S | M | — | — | S | M |
+| Reportar un incidente en el barrio | E | M | — | — | — | — |
+| Priorizar alertas entrantes | — | — | D | A | — | — |
+| Despachar una unidad de serenazgo | — | — | D | A | — | — |
+| Revisar y exportar expedientes PNP | — | — | D | A | — | — |
+| Verificar reportes comunitarios | — | — | S | M | D | A |
+| Analizar patrones por hora, zona y tipo | — | — | S | M | S | A |
 
-Coinciden la necesidad de comprender el estado y limitar la información compartida. La coordinación tiene una responsabilidad adicional de asignación y continuidad entre personas. La frecuencia real no puede deducirse de noticias ni del rol supuesto.
+Lucía actúa ante eventos y bajo estrés; Carlos y Rosa trabajan a diario con volumen alto. Por eso Misthy Web es mobile-first con un paso por pantalla y Command es desktop-first con cola, mapa y atajos.
 
 <a id="journeys"></a>
-### 2.3.3. User Journey Mapping — As-Is hipotéticos
+### 2.3.3. User Journey Mapping — As-Is
 
-**P1: desde una amenaza hasta buscar continuidad de atención, sin MISTHY.**
+**Lucía: le roban el celular al paso (sin MISTHY).**
 
-| Etapa | Acción actual hipotética | Canal | Fricción a investigar | Emoción hipotética | Oportunidad |
+| Etapa | Acción | Canal | Fricción | Emoción | Oportunidad |
 |---|---|---|---|---|---|
-| Percibir el incidente | Reconoce una amenaza o pérdida. | Entorno o mensajes. | Incertidumbre sobre urgencia. | Temor. | Orientación comprensible. |
-| Pedir apoyo | Contacta a una persona o entidad. | Llamada o visita. | No sabe si alguien recibió el pedido. | Ansiedad. | Confirmación diferenciada. |
-| Reunir información | Busca fechas, mensajes y documentos. | Archivos y conversaciones. | Información fragmentada. | Agobio. | Cronología privada. |
-| Seguir la gestión | Vuelve a consultar por avances. | Llamada o visita. | No identifica responsable o próxima acción. | Frustración. | Historial con fuente y estado. |
-| Continuar su actividad | Decide cómo preservar información y apoyo. | Red personal. | Temor a exposición. | Cautela. | Control de acceso y cierre voluntario. |
+| Robo | Le arrebatan el celular en la calle. | — | No tiene cómo pedir ayuda. | Miedo, shock. | M2 Pánico y M4 detección de «jalón». |
+| Pedir ayuda | Pide un celular prestado y llama a un familiar. | Llamada. | No recuerda números; no sabe a quién avisar primero. | Ansiedad. | Misthy Web: acceso de emergencia y aviso a contactos. |
+| Proteger | Intenta bloquear el equipo y cambiar contraseñas. | Navegador prestado. | Varias cuentas, no sabe si funcionó. | Frustración. | Bloquear, sirena y bóveda con estados honestos (UF1, UF3). |
+| Denunciar | Va a la comisaría. | Presencial. | Le piden ubicación, hora y pruebas que no tiene ordenadas. | Impotencia. | Expediente PDF enviado a la comisaría (UF2). |
+| Seguir el caso | Vuelve a preguntar días después. | Presencial o llamada. | No sabe quién lleva su caso. | Desconfianza. | Estado y código del expediente. |
 
-**P2: desde recibir un aviso hasta transferir o cerrar el seguimiento, sin MISTHY.**
+**Carlos: recibe una alerta en la central (sin MISTHY).**
 
-| Etapa | Acción actual hipotética | Canal | Fricción a investigar | Emoción hipotética | Oportunidad |
+| Etapa | Acción | Canal | Fricción | Emoción | Oportunidad |
 |---|---|---|---|---|---|
-| Recibir | Escucha o lee una solicitud. | Llamada o mensaje. | Avisos incompletos. | Preocupación. | Datos mínimos claros. |
-| Comprender | Solicita contexto pertinente. | Conversación. | Repetición y duplicidad. | Presión. | Relación entre registros. |
-| Coordinar | Busca a quien pueda apoyar. | Contactos. | Disponibilidad incierta. | Urgencia. | Responsable y límites visibles. |
-| Dar seguimiento | Anota actuaciones y consulta pendientes. | Notas o mensajes. | Traspaso sin contexto. | Sobrecarga. | Cronología consistente. |
-| Cerrar o escalar | Comunica qué se hizo y qué falta. | Conversación o constancia. | Confundir cierre interno con resolución oficial. | Incertidumbre. | Motivo de cierre y evidencia. |
+| Recibir | Atiende una llamada de un vecino. | Teléfono. | Dirección imprecisa, sin evidencia. | Presión. | Alerta con GPS y evidencia en el monitor. |
+| Priorizar | Decide qué atender primero entre varias llamadas. | Memoria y papel. | Sin criterio común de severidad. | Estrés. | Cola ordenada por severidad S1–S5. |
+| Despachar | Llama por radio a una unidad. | Radio. | No sabe cuál está libre o más cerca. | Urgencia. | Serenos cercanos en el detalle de la alerta (UF4). |
+| Cerrar | Anota el resultado. | Cuaderno. | Registro incompleto. | Cansancio. | Estados en camino → en sitio → cerrada. |
+| Coordinar con PNP | Envía información a la comisaría. | Llamada u oficio. | Información incompleta. | Frustración. | Bandeja de expedientes y exportación PDF (UF6). |
 
-**As-Is Scenario Map complementario:** P1 hace llamadas y reúne información, piensa cómo protegerse y podría sentir incertidumbre; P2 recibe, pregunta y coordina, piensa qué puede hacer con sus recursos y podría sentir presión. Son hipótesis de Doing/Thinking/Feeling que se reemplazarán por observaciones consentidas.
+**Rosa: gestiona reportes vecinales (sin MISTHY).**
+
+| Etapa | Acción | Canal | Fricción | Emoción | Oportunidad |
+|---|---|---|---|---|---|
+| Recibir | Lee reportes en grupos de mensajería. | WhatsApp. | Duplicados, rumores, sin fotos. | Saturación. | Reportes con evidencia y reputación del autor. |
+| Verificar | Pregunta a vecinos y serenos. | Llamadas. | Lento y sin registro. | Duda. | Verificar o descartar con motivo (UF5). |
+| Publicar | Comparte avisos en el grupo. | Mensajería. | Información sin moderar. | Preocupación. | Publicación en el Mapa Vivo con deshacer. |
+| Reportar a gestión | Arma un informe mensual. | Excel. | Datos dispersos. | Agobio. | Analítica por hora, zona y tipo. |
 
 <a id="empathy"></a>
-### 2.3.4. Empathy Mapping — hipótesis
+### 2.3.4. Empathy Mapping
 
-| Dimensión | P1 | P2 |
-|---|---|---|
-| Con quién se empatiza | Adulto que busca apoyo sin perder control de información. | Adulto responsable de coordinar dentro de recursos limitados. |
-| Qué necesita hacer | Pedir ayuda, ordenar hechos y seguir gestiones. | Comprender, priorizar, asignar y comunicar actuaciones. |
-| Qué ve | Posibles canales e información dispersa; por validar. | Posibles avisos simultáneos y registros separados; por validar. |
-| Qué dice | Sin citas disponibles; preguntar qué respuesta considera suficiente. | Sin citas disponibles; preguntar qué necesita para hacerse cargo. |
-| Qué hace | Hipótesis: busca contactos y conserva mensajes. | Hipótesis: consulta a otros y anota avances. |
-| Qué escucha | Investigar recomendaciones y advertencias de su entorno. | Investigar indicaciones de responsables y expectativas de vecinos. |
-| Qué piensa y siente | Hipótesis: temor a exposición e incertidumbre sobre respuesta. | Hipótesis: presión por responder sin información suficiente. |
-| Pains | Exposición, barreras de acceso, repetición y falta de seguimiento. | Duplicidad, responsabilidad difusa y falta de recursos. |
-| Gains | Control, claridad y continuidad. | Priorización justificable y registro de actuaciones. |
+| Dimensión | Lucía | Carlos | Rosa |
+|---|---|---|---|
+| Qué necesita hacer | Proteger su celular y documentos, avisar a su gente y denunciar. | Atender lo más grave y despachar rápido. | Publicar información confiable y mantener activa a la comunidad. |
+| Qué ve | Un celular prestado, una comisaría con cola. | Muchas llamadas y un mapa en la pared. | Grupos de mensajería llenos de reportes. |
+| Qué dice (a confirmar) | «Solo quiero que no puedan usar mi celular.» | «Necesito saber qué unidad está más cerca.» | «No puedo publicar algo que no sé si es cierto.» |
+| Qué hace | Llama a un familiar, intenta cambiar contraseñas. | Llama por radio y anota en papel. | Pregunta a vecinos y serenos. |
+| Qué escucha | «En la comisaría no hacen nada si no tienes pruebas.» | Quejas por la demora del serenazgo. | Rumores y alarmas falsas. |
+| Qué piensa y siente | Miedo a que usen sus fotos y su DNI. | Presión por tiempos de respuesta. | Responsabilidad por lo que se publica. |
+| Pains | Sin teléfono, sin pruebas, sin seguimiento. | Sin ubicación precisa, sin criterio de prioridad. | Duplicados, falsos reportes, poco reconocimiento al vecino. |
+| Gains | Bloqueo confirmado, expediente enviado, contactos avisados. | Cola por severidad, unidad más cercana, cierre registrado. | Reportes verificados, vecinos con puntos y badges, analítica. |
+
+<a id="user-goals"></a>
+### 2.3.5. User Goals
+
+Los user goals que guían los wireflows (WF1–WF6) y los user flows (UF1–UF6) del capítulo IV. El capítulo III los convierte en historias de usuario.
+
+| ID | Persona | User goal | Producto |
+|---|---|---|---|
+| UG1 | Lucía | Como ciudadana a quien le robaron el celular, quiero bloquearlo desde un navegador prestado para que el ladrón no pueda usarlo. | Misthy Web |
+| UG2 | Lucía | Como ciudadana víctima de robo, quiero enviar mi expediente con evidencias a la comisaría para iniciar la denuncia. | Misthy Web |
+| UG3 | Lucía | Como ciudadana, quiero borrar o congelar mis documentos sensibles para que nadie los use si desbloquean el equipo. | Misthy Web |
+| UG4 | Carlos | Como operador de serenazgo, quiero atender la alerta más grave y enviar al sereno más cercano para reducir el tiempo de respuesta. | Misthy Command |
+| UG5 | Rosa | Como supervisora, quiero validar los reportes vecinales con evidencia para publicar solo información confiable en el mapa. | Misthy Command |
+| UG6 | Carlos | Como operador, quiero revisar el expediente que envió una ciudadana y exportarlo para la comisaría. | Misthy Command |
+| UG7 | Lucía | Como ciudadana, quiero pedir ayuda sin desbloquear el celular para que mis contactos y la central sepan dónde estoy. | Misthy App (M2) |
+| UG8 | Lucía | Como ciudadana, quiero saber si estoy entrando a una zona roja y dónde está el Punto Misthy más cercano. | Misthy App (M1) |
+| UG9 | Lucía | Como pasajera, quiero que mis contactos sean avisados si el taxi se desvía y no respondo. | Misthy App (M3) |
+| UG10 | Lucía | Como ciudadana bajo coacción, quiero entregar un PIN falso que alerte en silencio. | Misthy App (M5) |
 
 <a id="eventstorming"></a>
 ## 2.4. Big Picture EventStorming
 
-Modelo preliminar individual del dominio. No se ha celebrado una sesión colaborativa. Se documentan los eventos en pasado y los puntos de incertidumbre para discutirlos con representantes de ambos segmentos. Es análisis del negocio, no arquitectura del capítulo IV.
+Modelo del dominio con eventos en pasado. Se revisará con representantes de las tres personas.
 
-**Etapa 1 — Exploración:** amenaza recibida, incidente advertido, apoyo solicitado, solicitud recibida, información aportada, responsable asignado, actuación registrada, solicitud derivada, actualización recibida y seguimiento cerrado.
+**Etapa 1 — Exploración (eventos):** Celular robado, Pánico activado, Alerta enviada, Alerta entregada, Acceso de emergencia iniciado, Llave Misthy verificada, Bloqueo solicitado, Bloqueo confirmado por el dispositivo, Bloqueo fallido, Sirena activada, Bóveda desbloqueada con 2FA, Archivos borrados, Bóveda congelada, Expediente generado, Expediente enviado a la PNP, Alerta recibida en Command, Severidad asignada, Sereno despachado, Unidad en sitio, Alerta cerrada, Reporte comunitario creado, Reporte verificado, Reporte descartado, Expediente revisado, Expediente exportado, Desvío de ruta detectado, PIN de coacción ingresado.
 
-**Etapa 2 — Orden temporal y bifurcaciones:** una solicitud puede existir sin adjuntos; la recepción no garantiza atención; el seguimiento puede permanecer pendiente y reabrirse. El ciudadano decide si comparte información sensible.
+**Etapa 2 — Línea de tiempo principal:**
 
 ```mermaid
 flowchart LR
-  incident["Incidente advertido"] --> support["Apoyo solicitado"]
-  support --> received["Solicitud recibida"]
-  support --> unconfirmed["Recepción no confirmada"]
-  unconfirmed --> followup["Seguimiento solicitado"]
-  followup --> received
-  received --> assigned["Responsable asignado"]
-  assigned --> action["Actuación registrada"]
-  action --> referred["Solicitud derivada"]
-  referred --> update["Actualización recibida"]
-  action --> closed["Seguimiento cerrado con motivo"]
-  update --> closed
-  closed --> reopened["Seguimiento reabierto"]
-  reopened --> assigned
-  incident --> evidence["Información aportada voluntariamente"]
-  evidence --> action
+  robo["Celular robado"] --> acceso["Acceso de emergencia iniciado"]
+  acceso --> llave["Llave Misthy verificada"]
+  llave --> bloqueo["Bloqueo solicitado"]
+  bloqueo --> pendiente["Orden pendiente de conexión"]
+  pendiente --> confirmado["Bloqueo confirmado por el dispositivo"]
+  pendiente --> fallido["Bloqueo fallido"]
+  fallido --> pnp
+  llave --> boveda["Bóveda desbloqueada con 2FA"]
+  boveda --> borrado["Archivos borrados o bóveda congelada"]
+  llave --> pnp["Expediente enviado a la PNP"]
+  pnp --> recibido["Expediente recibido en Command"]
+  recibido --> revisado["Expediente revisado"]
+  revisado --> exportado["Expediente exportado"]
+  panico["Pánico activado"] --> alerta["Alerta recibida en Command"]
+  alerta --> severidad["Severidad asignada (S1–S5)"]
+  severidad --> despacho["Sereno despachado"]
+  despacho --> sitio["Unidad en sitio"]
+  sitio --> cerrada["Alerta cerrada con motivo"]
+  reporte["Reporte comunitario creado"] --> verificado["Reporte verificado"]
+  reporte --> descartado["Reporte descartado con motivo"]
+  verificado --> mapa["Publicado en el Mapa Vivo"]
 ```
 
-**Etapa 3 — Actores y reglas de negocio:**
+**Etapa 3 — Actores, comandos y reglas:**
 
-| Actor | Actuación | Regla propuesta |
-|---|---|---|
-| Ciudadano | Solicita apoyo y aporta información. | Mantiene control de sus autorizaciones; puede pedir ayuda sin adjuntar archivos. |
-| Contacto de confianza | Acepta participar y acusa recibo. | Recibir un mensaje no significa aceptar hacerse cargo ni ser autoridad. |
-| Coordinador | Asigna y registra actuaciones. | Solo accede al ámbito autorizado; no declara resuelto un proceso judicial. |
-| Moderador | Evalúa avisos comunitarios. | No publica datos de extorsión, identidades ni acusaciones individuales. |
-| Entidad externa | Puede recibir una gestión por un canal independiente. | Solo se registra su respuesta si existe evidencia y se identifica su origen. |
-
-**Etapa 4 — Hotspots y oportunidades:**
-
-| Hotspot | Riesgo | Pregunta pendiente | Consecuencia para requisitos |
+| Actor | Comando | Evento | Regla |
 |---|---|---|---|
-| Recepción sin actuación | Falsa sensación de ayuda. | ¿Cómo se acredita cada estado? | Separar entrega, lectura y actuación. |
-| Temor a represalias | Exposición de personas. | ¿Quién necesita ver qué datos? | Extorsión privada y permisos revocables. |
-| Denuncia formal | Confundir registro interno con acto oficial. | ¿Qué constancia dispone el ciudadano? | Referencia externa con procedencia. |
-| Información contradictoria | Acusación o cierre incorrecto. | ¿Cómo se corrige conservando historial? | Correcciones con autor, fecha y motivo. |
-| Falta de respuesta | Abandono y frustración. | ¿Qué plazo y canal son apropiados? | Recordatorios configurables, sin promesa de despacho. |
-| Prioridad por recursos | Trato desigual. | ¿Qué criterios de riesgo se acuerdan? | Prioridad justificada, sin usar plan de pago. |
+| Lucía (ciudadana) | Ingresar correo y Llave Misthy | Llave Misthy verificada | Tras 3 fallos, pausa de 15 min y aviso al correo. |
+| Lucía | Bloquear dispositivo | Bloqueo solicitado | No se muestra «bloqueado» sin confirmación del dispositivo; si en 10 min no responde, «No se pudo ejecutar». |
+| Lucía | Borrar seleccionados | Archivos borrados | Requiere 2FA y escribir BORRAR; tras 3 códigos inválidos la bóveda se bloquea 30 min. |
+| Lucía | Avisar a PNP | Expediente enviado | Requiere aceptar la declaración; si falla, se ofrece descargar el PDF. |
+| Carlos (operador) | Despachar unidad | Sereno despachado | Se sugiere la unidad libre más cercana; sin unidades, escalar a PNP o a otro sector. |
+| Carlos | Exportar expediente | Expediente exportado | Si falta información se pide a la ciudadana y queda «Recibido». |
+| Rosa (supervisora) | Verificar reporte | Reporte verificado | Solo con evidencia suficiente y sin duplicado; nunca se publican extorsiones ni identidades. |
+| Sistema | Ordenar cola | Severidad asignada | La prioridad depende del riesgo, nunca del plan de pago. |
 
-La validación debe revisar estos eventos con participantes; una exportación visual no sustituye esa validación.
+**Etapa 4 — Hotspots:**
+
+| Hotspot | Riesgo | Pregunta | Consecuencia para requisitos |
+|---|---|---|---|
+| Equipo apagado o sin datos | El bloqueo no llega. | ¿Qué se muestra y qué alternativas se ofrecen? | Estado «Pendiente de conexión», Red Mesh y última ubicación. |
+| Llave Misthy olvidada | Lucía no puede entrar. | ¿Qué recuperación es segura? | Flujo de recuperación con verificación adicional. |
+| Falsas alarmas | Carga para el serenazgo. | ¿Cómo se cierra una falsa alarma? | Cierre con motivo y métricas de falsos positivos. |
+| Reporte de extorsión | Represalias. | ¿Quién puede verlo? | Privado por defecto, nunca en el mapa. |
+| Denuncia formal | Confundir expediente con denuncia. | ¿Qué constancia recibe la ciudadana? | Código de expediente y próximos pasos explícitos. |
+| Prioridad por recursos | Trato desigual. | ¿Qué criterios de severidad se acuerdan? | Escala S1–S5 con criterio documentado. |
 
 <a id="lenguaje"></a>
 ## 2.5. Ubiquitous Language
 
-| Término de dominio | Definición acordada para la propuesta |
+Los términos coinciden con las etiquetas del capítulo IV (4.2.2) para que diseño, código y documentación hablen igual.
+
+| Término | Definición |
 |---|---|
-| Citizen (ciudadano) | Persona adulta que solicita apoyo o conserva información de un incidente. |
-| Incident (incidente) | Situación reportada que afecta o puede afectar la seguridad; no implica delito probado. |
-| Threat (amenaza) | Comunicación o conducta que el reportante percibe como intimidación; se conserva como relato atribuido. |
-| Suspected Extortion (presunta extorsión) | Incidente descrito como amenaza asociada a una exigencia; su clasificación en MISTHY no es una determinación jurídica. |
-| Support Request (solicitud de apoyo) | Petición dirigida a una red autorizada; distinta de denuncia formal. |
-| Trusted Contact (contacto de confianza) | Persona que acepta participar en la red designada por el ciudadano. |
-| Acknowledgment (acuse de recibo) | Confirmación de recepción; no prueba atención o resolución. |
-| Local Coordinator (coordinador local) | Responsable autorizado para organizar seguimiento dentro de una organización. |
-| Follow-up (seguimiento) | Conjunto de consultas y actuaciones posteriores a una solicitud. |
-| Case Timeline (cronología del caso) | Secuencia de hechos relatados y actuaciones con fechas y fuentes diferenciadas. |
-| Formal Complaint (denuncia formal) | Comunicación registrada ante una entidad competente por sus canales; no se crea automáticamente al reportar en MISTHY. |
-| External Reference (referencia externa) | Identificador o constancia de una gestión externa aportada con su procedencia. |
-| Supporting Material (material de respaldo) | Archivo aportado voluntariamente; no se presume auténtico ni admisible judicialmente. |
-| Disclosure Permission (permiso de divulgación) | Autorización de acceso delimitada por persona, alcance y vigencia. |
-| Community Notice (aviso comunitario) | Información moderada y minimizada que puede publicarse sobre el entorno. |
-| Severity (severidad) | Nivel de atención operativa propuesto según criterios de riesgo, no según capacidad económica. |
-| Referral (derivación) | Traslado documentado de una solicitud por un canal identificado. |
-| Internal Closure (cierre interno) | Fin del seguimiento en MISTHY con motivo; no equivale a sentencia o resolución del delito. |
-| Reopening (reapertura) | Continuación del seguimiento por información nueva o necesidad pendiente. |
-| Last Known Location (última ubicación conocida) | Ubicación recibida con fecha y precisión; no garantiza ubicación actual. |
+| Ciudadano (Citizen) | Persona adulta que usa Misthy App o Misthy Web. |
+| Llave Misthy (Misthy Key) | Clave secreta de 12–16 caracteres, distinta de la contraseña, para el acceso de emergencia y para autorizar el apagado en modo kiosk. |
+| Acceso de emergencia (Emergency Access) | Ingreso a Misthy Web con correo y Llave Misthy desde cualquier navegador. |
+| Panel de recuperación (Recovery Panel) | Vista de Misthy Web con estado del dispositivo, ubicación y acciones remotas. |
+| Orden remota (Remote Command) | Acción enviada al dispositivo: bloquear, sirena, borrar o congelar bóveda. |
+| Estado de orden (Command Status) | Solicitud enviada, Pendiente de conexión, Confirmado por el dispositivo o No se pudo ejecutar. |
+| Lockdown / Bloqueo | Bloqueo remoto con pantalla «Dispositivo reportado — MISTHY», fotos stealth y GPS forzado. |
+| Sirena (Siren) | Alarma remota al 100 % de volumen aunque el equipo esté en silencio. |
+| Bóveda (Vault) | Documentos y credenciales cifrados con AES-256; se pueden congelar (reversible) o borrar (irreversible). |
+| Expediente PNP (Police File) | PDF probatorio con ruta, fotos, audio, datos del equipo y timestamps, enviado a la comisaría del sector. No es una denuncia formal hasta que la PNP la registra. |
+| Contacto de confianza (Trusted Contact) | Persona que aceptó recibir las alertas del ciudadano. |
+| Alerta (Alert) | Incidente entrante en Misthy Command con código (por ejemplo A-2041) y severidad. |
+| Severidad (Severity) | Escala S1 Baja, S2 Moderada, S3 Media, S4 Alta, S5 Crítica, basada en riesgo, nunca en plan de pago. |
+| Sereno / Unidad (Unit) | Personal o vehículo de serenazgo que se despacha (por ejemplo SZ-07). |
+| Despacho (Dispatch) | Asignación de una unidad a una alerta, con estados en camino, en sitio y cerrada. |
+| Reporte comunitario (Community Report) | Incidente reportado por un vecino, con evidencia opcional, que se verifica o descarta (por ejemplo R-311). |
+| Mapa Vivo (Live Map) | Mapa de calor de delitos verificados y pines comunitarios. |
+| Zona roja (Red Zone) | Área con alta concentración reciente de delitos verificados. |
+| Punto Misthy (Safe Point) | Comercio aliado que funciona como refugio. |
+| Modo Viaje Seguro (Safe Trip) | Seguimiento de un trayecto con placa registrada y geocerca de desvío. |
+| PIN de coacción (Duress PIN) | PIN falso que abre una pantalla señuelo y activa un Lockdown silencioso. |
+| Falso Acompañante (Fake Companion) | Llamada o videollamada simulada con voz IA. |
+| Red Mesh (Mesh Network) | Retransmisión Bluetooth cifrada de la señal de un equipo sin datos a través de otros usuarios cercanos. |
+| Última ubicación conocida (Last Known Location) | Ubicación recibida con hora y precisión; no garantiza la ubicación actual. |
+| Cierre interno (Internal Closure) | Fin del seguimiento en MISTHY con motivo; no equivale a una resolución judicial. |
 
 <a id="referencias"></a>
 ## Referencias y validaciones pendientes
@@ -317,4 +357,4 @@ La validación debe revisar estos eventos con participantes; una exportación vi
 - **C4.** Life360. (s. f.). *SOS Alerts*. Consulta: 09/10/2026. https://support.life360.com/hc/en-us/articles/23053474049687-SOS-Alerts
 - **C5.** Google. (s. f.). *Encontrar, bloquear o borrar los datos de un dispositivo Android perdido*. Consulta: 09/10/2026. https://support.google.com/android/answer/6160491?hl=es
 
-**Para cerrar la investigación:** reclutar participantes, ejecutar y registrar entrevistas consentidas, analizar respuestas y contradicciones, sustituir proto-personas por perfiles sustentados y validar el modelo del dominio. Esta versión sí entrega los instrumentos y análisis documental; no declara completado el trabajo de campo.
+**Pendiente:** ejecutar y registrar las entrevistas de 2.2, confirmar o corregir a Lucía, Carlos y Rosa con evidencia, y revisar el modelo del dominio con representantes de serenazgo y juntas vecinales.
