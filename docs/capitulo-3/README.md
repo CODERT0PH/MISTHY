@@ -1,220 +1,243 @@
 # Capítulo III: Requirements Specification
 
-**Autor:** Christoper Steven Rivas Castillo — **CODERT0PH**. **Proyecto personal:** MISTHY. **Versión:** 0.1.0. **Fecha:** 9 de octubre de 2026.
+**Autor:** Christoper Steven Rivas Castillo — [CODERT0PH](https://github.com/CODERT0PH). **Proyecto personal:** MISTHY. **Versión:** 0.2.0. **Fecha:** 10 de octubre de 2026.
 
-[Capítulo I](https://github.com/CODERT0PH/MISTHY-/blob/feature-capitulo1/docs/capitulo-1/README.md) · [Capítulo II](https://github.com/CODERT0PH/MISTHY-/blob/feature-capitulo2/docs/capitulo-2/README.md)
+[Capítulo I](../capitulo-1/README.md) · [Capítulo II](../capitulo-2/README.md) · [Capítulo IV](../capitulo-4/README.md)
 
-Los requisitos convierten la visión del fundador y la investigación documental en una propuesta verificable. No se afirma que estén implementados ni validados por entrevistas. La trazabilidad usa N01–N06 del capítulo II e H01–H07 del capítulo I. Los contratos técnicos son propuestas para Node.js, no endpoints desplegados. Figma y capítulo IV quedan fuera de esta rama.
+Este capítulo convierte los user goals del capítulo II (UG1–UG10) y los módulos del capítulo I (Misthy App M1–M8, Misthy Web y Misthy Command) en historias verificables. Las seis historias que nacen de los flujos del capítulo IV (UF1–UF6) usan el mismo user goal, la misma persona y los mismos happy y unhappy paths que el diseño en Figma, para que diseño y requisitos no se contradigan. La trazabilidad usa N01–N08 (capítulo II) e H01–H12 (capítulo I).
 
 ## Contenido
 
 - [3.1. User Stories](#stories)
 - [3.2. Impact Mapping](#impact)
 - [3.3. Product Backlog](#backlog)
-- [Restricciones, trazabilidad y preparación del diseño](#restricciones)
+- [Requisitos no funcionales y trazabilidad](#restricciones)
 
 <a id="stories"></a>
 ## 3.1. User Stories
 
-Se definen siete épicas, 24 historias de usuario y ocho historias técnicas. Los criterios están en presente y describen comportamientos comprobables sin imponer una composición visual. Cada escenario sigue Dado–Cuando–Entonces (Given–When–Then). Las épicas agrupan resultados; no se estiman además de sus historias para evitar doble conteo.
+Once épicas, 40 historias de usuario y diez historias técnicas. Los criterios de aceptación siguen Dado–Cuando–Entonces. Las historias marcadas con **UF** son las de los user flows del capítulo IV.
 
-| Epic / Story ID | Título | Descripción | Criterios de aceptación | Relacionado con (Epic ID) |
+### Épicas
+
+| Epic ID | Título | Descripción | Criterio de aceptación |
+|---|---|---|---|
+| EP01 | Landing e inclusión | Como visitante deseo entender MISTHY y llegar al producto que me corresponde. | Dado un visitante de cualquier audiencia, cuando explora `misthy.pe`, entonces encuentra su ruta (ciudadano, organización, municipalidad o emergencia). |
+| EP02 | Cuenta y Llave Misthy | Como ciudadano deseo preparar mi cuenta y mi Llave Misthy para poder recuperar el control si me roban el celular. | Dada una cuenta verificada, cuando configura su Llave Misthy, entonces puede usar el acceso de emergencia. |
+| EP03 | Recuperación del dispositivo (Misthy Web) | Como ciudadana deseo ubicar, bloquear, hacer sonar y proteger mi celular desde cualquier navegador. | Dada una sesión de emergencia, cuando envía una orden remota, entonces ve su estado real hasta la confirmación o el fallo. |
+| EP04 | Expediente y denuncia | Como ciudadana deseo reunir evidencia y enviarla a la comisaría para iniciar la denuncia. | Dado un incidente con evidencia, cuando se envía el expediente, entonces recibe código y próximos pasos. |
+| EP05 | Pánico y red de confianza (M2) | Como ciudadana deseo pedir ayuda sin desbloquear el celular y que mi red me ubique. | Dada una red aceptada, cuando activo el pánico, entonces contactos y central reciben mi ubicación y se distingue envío de entrega. |
+| EP06 | Mapa Vivo y comunidad (M1, M7) | Como vecina deseo conocer zonas de riesgo y aportar reportes verificados. | Dado un reporte verificado, cuando se publica, entonces aparece en el mapa sin datos privados. |
+| EP07 | Trayectos y coacción (M3, M5, M8) | Como ciudadana deseo protegerme en trayectos y bajo coacción. | Dado un riesgo en un trayecto, cuando no respondo o uso el PIN falso, entonces se alerta a mi red sin delatarme. |
+| EP08 | Anti-robo en el dispositivo (M4) | Como ciudadana deseo que mi celular robado siga siendo localizable y difícil de usar. | Dado un robo, cuando el equipo pierde datos o lo intentan apagar, entonces se conserva la mayor información posible. |
+| EP09 | Misthy Command: monitor y despacho | Como operador de serenazgo deseo atender primero lo más grave y despachar rápido. | Dada una alerta, cuando se despacha, entonces queda registrada la unidad, la ruta y su estado. |
+| EP10 | Misthy Command: gestión y analítica | Como supervisora deseo analizar patrones y administrar la operación. | Dado un periodo, cuando consulta la analítica, entonces ve patrones por hora, zona y tipo. |
+| EP11 | Servicios e integración | Como Developer deseo contratos verificables para integrar app, web y Command. | Dada una operación documentada, cuando se ejecuta, entonces respeta autorización y contratos de éxito y error. |
+
+### Historias de usuario
+
+| Story ID | Título | Descripción | Criterios de aceptación | Epic |
 |---|---|---|---|---|
-| EP01 | Descubrimiento e inclusión | Como visitante deseo comprender y acceder al servicio para evaluar su utilidad. | Dado un visitante de cualquiera de los segmentos, cuando explora la oferta, entonces comprende límites y accede al flujo correspondiente. | — |
-| EP02 | Registro privado y material de respaldo | Como ciudadano deseo organizar un incidente para conservar información controlada. | Dado un incidente propio, cuando se registra y exporta información autorizada, entonces conserva procedencia y privacidad. | — |
-| EP03 | Red de confianza y apoyo | Como ciudadano deseo preparar y avisar a mi red para solicitar apoyo. | Dada una red aceptada, cuando se solicita apoyo, entonces se diferencia envío, recepción y actuación. | — |
-| EP04 | Coordinación y seguimiento | Como usuario autorizado deseo conocer responsables y actuaciones para mantener continuidad. | Dada una solicitud compartida, cuando cambia su seguimiento, entonces conserva actor, fecha y motivo. | — |
-| EP05 | Información comunitaria responsable | Como ciudadano deseo consultar avisos moderados para informarme del entorno. | Dado un aviso publicable, cuando se consulta, entonces no expone información privada ni garantiza seguridad. | — |
-| EP06 | Acceso y control de información | Como titular deseo gestionar acceso y permisos para conservar control de mis datos. | Dado un permiso válido, cuando se accede a un recurso, entonces solo se entrega el alcance autorizado. | — |
-| EP07 | Servicios e integración | Como Developer deseo contratos verificables para integrar las experiencias de MISTHY. | Dada una operación documentada, cuando se ejecuta, entonces respeta autorización y contratos de éxito y error. | — |
-| US01 | Conocer el servicio ciudadano | Como visitante ciudadano, deseo conocer el alcance, límites y acceso al servicio para decidir si responde a mi necesidad. | **Escenario 1.** Dado un visitante sin sesión, cuando consulta el servicio, entonces obtiene su propósito, funciones esenciales y límites sin registrarse.<br>**Escenario 2.** Dado un visitante que decide continuar, cuando solicita acceso ciudadano, entonces se dirige a la experiencia web correspondiente sin una promesa de atención policial garantizada. | EP01 |
-| US02 | Evaluar coordinación organizacional | Como visitante de una organización, deseo conocer condiciones y solicitar información de un piloto para evaluar su utilidad para mi organización. | **Escenario 1.** Dado un visitante organizacional, cuando consulta la propuesta, entonces conoce cobertura prevista, responsabilidades y carácter exploratorio de los precios.<br>**Escenario 2.** Dada una solicitud válida de contacto consentido, cuando se registra, entonces obtiene una referencia de recepción; si falla, no se confirma como recibida. | EP01 |
-| US03 | Registrar un incidente privado | Como ciudadano, deseo registrar un robo, amenaza o presunta extorsión para organizar mi información sin divulgarla. | **Escenario 1.** Dado un ciudadano autenticado, cuando aporta categoría, relato y fecha conocida o marcada como aproximada, entonces se crea un incidente privado con identificador y fecha de registro.<br>**Escenario 2.** Dado un reporte sin adjuntos o sin ubicación exacta, cuando cumple los datos mínimos, entonces se acepta; la falta de pruebas no impide solicitar apoyo.<br>**Escenario 3.** Dado un incidente de presunta extorsión, cuando se registra, entonces no se publica en el mapa ni se envía automáticamente a terceros. | EP02 |
-| US04 | Solicitar apoyo a la red | Como ciudadano, deseo avisar a mis contactos aceptados para pedir apoyo y conocer el resultado del envío. | **Escenario 1.** Dado un incidente propio y contactos aceptados, cuando se confirma una solicitud de apoyo, entonces se generan avisos con la información autorizada y estado inicial pendiente.<br>**Escenario 2.** Dado un proveedor que rechaza un envío, cuando informa el fallo, entonces el aviso queda fallido; no se registra recepción ni atención.<br>**Escenario 3.** Dado que no hay contactos aceptados, cuando se solicita apoyo, entonces se informa la ausencia de destinatarios sin simular un envío. | EP03 |
-| US05 | Invitar un contacto de confianza | Como ciudadano, deseo invitar a una persona de confianza para preparar mi red de apoyo. | **Escenario 1.** Dado un ciudadano con un medio de contacto válido, cuando envía una invitación, entonces queda pendiente hasta que el destinatario acepta.<br>**Escenario 2.** Dada una invitación rechazada o vencida, cuando se prepara una alerta, entonces ese destinatario no se incluye. | EP03 |
-| US06 | Aceptar o rechazar una invitación | Como contacto invitado, deseo decidir si participo y retirar mi aceptación para controlar mi disponibilidad y mis datos. | **Escenario 1.** Dada una invitación vigente, cuando el destinatario acredita acceso al medio invitado y acepta, entonces queda registrado el consentimiento y su fecha.<br>**Escenario 2.** Dado un contacto aceptado, cuando retira su consentimiento, entonces deja de recibir nuevos avisos y pierde el acceso compartido asociado. | EP03 |
-| US07 | Consultar y corregir la cronología | Como ciudadano, deseo ordenar hechos y actuaciones de mi incidente para comprender qué ocurrió y qué se ha hecho. | **Escenario 1.** Dado un incidente propio, cuando se consulta su cronología, entonces cada entrada identifica autor, fecha del hecho, fecha de registro y procedencia.<br>**Escenario 2.** Dada una entrada incorrecta, cuando el autor la rectifica, entonces la corrección conserva referencia al original y motivo; no altera silenciosamente el historial. | EP02 |
-| US08 | Conservar material de respaldo | Como ciudadano, deseo adjuntar archivos privados de forma voluntaria para mantener información relacionada con el incidente. | **Escenario 1.** Dado un incidente propio, cuando se aporta un PDF, JPEG o PNG de hasta 10 MB, entonces el archivo se mantiene privado y registra nombre, tamaño, fecha y huella de integridad.<br>**Escenario 2.** Dado un archivo no admitido o identificado como riesgoso en la validación, cuando se intenta incorporar, entonces se rechaza o queda aislado sin estar disponible para compartir.<br>**Escenario 3.** Dada una huella coincidente, cuando se consulta el material, entonces se informa integridad desde el registro y no se certifica autenticidad del contenido. | EP02 |
-| US09 | Exportar una copia del caso | Como ciudadano, deseo seleccionar información y exportar un resumen para compartir una copia ordenada bajo mi responsabilidad. | **Escenario 1.** Dado un ciudadano con acceso al incidente, cuando selecciona entradas y solicita exportación, entonces obtiene un PDF con fechas, procedencia y referencia de archivos seleccionados.<br>**Escenario 2.** Dado material no autorizado para el solicitante, cuando se genera la copia, entonces se excluye; el documento identifica su origen en MISTHY y no se presenta como denuncia o certificación judicial. | EP02 |
-| US10 | Consultar seguimiento y pendientes | Como ciudadano, deseo conocer responsable, última actuación y próximo paso para reducir incertidumbre sobre mi solicitud. | **Escenario 1.** Dada una solicitud con seguimiento, cuando su titular la consulta, entonces conoce responsable si existe, última actualización y acciones pendientes.<br>**Escenario 2.** Dada una solicitud sin actuación, cuando se consulta, entonces se muestra pendiente y antigüedad sin afirmar que una autoridad la atiende. | EP04 |
-| US11 | Asignar responsable local | Como coordinador autorizado, deseo asignar o transferir seguimiento para evitar solicitudes sin continuidad. | **Escenario 1.** Dada una solicitud compartida con la organización, cuando un coordinador asigna un responsable vigente de su ámbito, entonces se registra quién asigna y cuándo.<br>**Escenario 2.** Dada una transferencia, cuando se confirma, entonces se conserva el responsable anterior; una persona ajena a la organización no puede ser asignada. | EP04 |
-| US12 | Registrar actuaciones y recordatorios | Como coordinador autorizado, deseo registrar acciones y próximos pasos para mantener un seguimiento verificable. | **Escenario 1.** Dado un caso autorizado, cuando se registra una actuación, entonces incluye responsable, fecha, descripción y próxima revisión opcional.<br>**Escenario 2.** Dada una revisión vencida, cuando se evalúan pendientes, entonces se señala el vencimiento sin convertirlo en confirmación de incumplimiento legal ni emitir un despacho automático. | EP04 |
-| US13 | Añadir referencias externas | Como ciudadano, deseo registrar una constancia o referencia de gestión externa para relacionar mis gestiones sin confundirlas con el registro interno. | **Escenario 1.** Dado un incidente propio, cuando se añade una referencia externa, entonces se registra entidad indicada, fecha, identificador disponible y origen declarado por el usuario.<br>**Escenario 2.** Dada una referencia sin verificación institucional, cuando se consulta, entonces aparece como aportada por el usuario y no como sincronización oficial. | EP04 |
-| US14 | Priorizar con criterios explícitos | Como coordinador autorizado, deseo clasificar urgencia y registrar el motivo para organizar atención sin favorecer a quien paga más. | **Escenario 1.** Dada una solicitud autorizada, cuando se asigna prioridad operativa alta, media o baja, entonces se registra motivo y responsable según una política acordada.<br>**Escenario 2.** Dadas dos solicitudes equivalentes, cuando difiere solo el plan de pago, entonces la prioridad no cambia por ese dato; toda modificación queda trazada. | EP04 |
-| US15 | Moderar avisos comunitarios | Como moderador autorizado, deseo revisar avisos antes de publicación para reducir exposición e información engañosa. | **Escenario 1.** Dado un aviso propuesto, cuando el moderador lo aprueba, entonces publica solo categoría general, fecha y zona aproximada sin identidades ni adjuntos privados.<br>**Escenario 2.** Dado un reporte de extorsión o contenido identificable, cuando se revisa, entonces no se publica como aviso comunitario y se registra el motivo. | EP05 |
-| US16 | Consultar avisos del entorno | Como ciudadano, deseo consultar avisos moderados con fecha y zona para informarme sin confundir reportes con seguridad garantizada. | **Escenario 1.** Dada una zona consultada, cuando existen avisos aprobados y vigentes, entonces se muestran categoría, fecha y carácter informativo sin datos privados.<br>**Escenario 2.** Dada una zona sin avisos, cuando se consulta, entonces se informa ausencia de registros y no ausencia de riesgo. | EP05 |
-| US17 | Recuperar acceso con Llave Misthy | Como titular de cuenta, deseo acceder desde otro equipo con una llave de recuperación para recuperar control si pierdo mi dispositivo habitual. | **Escenario 1.** Dada una cuenta con llave generada y vigente, cuando se verifican correo y llave, entonces se emite una sesión de emergencia limitada a recuperar control y consultar metadatos mínimos.<br>**Escenario 2.** Dada una llave inválida, cuando se intenta acceder, entonces se responde sin revelar existencia de cuenta y se aplica limitación de intentos.<br>**Escenario 3.** Dada una sesión de emergencia, cuando se solicitan archivos, exportaciones o eliminación, entonces se exige verificación adicional independiente; la llave por sí sola no autoriza esas acciones. | EP06 |
-| US18 | Revocar sesiones de MISTHY | Como titular de cuenta, deseo cerrar accesos anteriores y rotar mi llave para reducir exposición tras una pérdida. | **Escenario 1.** Dado un titular verificado, cuando revoca una sesión, entonces sus siguientes solicitudes dejan de estar autorizadas.<br>**Escenario 2.** Dada una rotación de llave autorizada, cuando finaliza, entonces la llave anterior deja de servir; se informa que esto no bloquea ni borra el teléfono. | EP06 |
-| US19 | Gestionar permisos de acceso | Como ciudadano, deseo autorizar y revocar acceso limitado a mi incidente para decidir quién conoce mis datos. | **Escenario 1.** Dado un incidente propio, cuando se concede permiso a un destinatario identificado, entonces se delimita el alcance y vigencia.<br>**Escenario 2.** Dado un permiso revocado o vencido, cuando el destinatario intenta una nueva consulta, entonces se deniega; se informa que una copia ya descargada no puede retirarse remotamente. | EP06 |
-| US20 | Crear y preparar una cuenta | Como ciudadano, deseo crear mi cuenta y configurar recuperación para preparar el uso del servicio. | **Escenario 1.** Dado un correo verificado y condiciones aceptadas, cuando se completa el registro, entonces se crea una cuenta sin publicar datos personales.<br>**Escenario 2.** Dada la preparación de recuperación, cuando se genera una llave, entonces se entrega al titular y se almacena solo una representación de verificación; no se incluye en registros de actividad. | EP06 |
-| US21 | Acceder y cerrar sesión | Como usuario registrado, deseo autenticarme y cerrar mi sesión para usar mis recursos con control de acceso. | **Escenario 1.** Dadas credenciales válidas, cuando el usuario se autentica, entonces obtiene acceso solo a sus recursos y permisos.<br>**Escenario 2.** Dada una sesión cerrada o vencida, cuando se solicita un recurso protegido, entonces se deniega y no se reutiliza una sesión de otro usuario. | EP06 |
-| US22 | Usar una experiencia comprensible y accesible | Como usuario, deseo consultar el servicio en español o inglés y operar con teclado para utilizarlo según mis necesidades. | **Escenario 1.** Dado un usuario que elige es-PE o en-US, cuando cambia el idioma, entonces se conservan sus datos y se actualizan textos y mensajes del flujo.<br>**Escenario 2.** Dado un usuario que navega con teclado y lector de pantalla, cuando realiza una tarea esencial, entonces identifica controles, foco y mensajes sin depender exclusivamente del color. | EP01 |
-| US23 | Compartir ubicación con consentimiento | Como ciudadano, deseo aportar ubicación a una solicitud autorizada para dar contexto sin perder control sobre el seguimiento. | **Escenario 1.** Dado permiso expreso y una posición disponible, cuando se comparte, entonces se incluyen fecha de captura y precisión con acceso restringido.<br>**Escenario 2.** Dado permiso denegado o conexión interrumpida, cuando se consulta la solicitud, entonces se informa la ausencia o antigüedad del dato y no se simula rastreo en vivo. | EP03 |
-| US24 | Cerrar y reabrir seguimiento | Como ciudadano o coordinador autorizado, deseo registrar cierre o reapertura con motivo para mantener continuidad sin confundir cierre interno con justicia obtenida. | **Escenario 1.** Dado un seguimiento activo y autorización, cuando se cierra, entonces se conserva fecha, responsable y motivo con la etiqueta cierre interno.<br>**Escenario 2.** Dada nueva información y autorización, cuando se reabre, entonces se preserva el historial y vuelve al seguimiento sin declarar una resolución judicial. | EP04 |
-| TS01 | API de incidentes y cronología | Como Developer, deseo crear y consultar incidentes mediante contratos consistentes para integrar las experiencias web. | **Escenario 1.** Dada autenticación válida y carga admisible, cuando se envía POST /api/v1/incidents, entonces responde 201 con identificador y recurso privado.<br>**Escenario 2.** Dada carga inválida, cuando se envía la solicitud, entonces responde 400 con errores de validación; un GET sin permiso responde 404 sin filtrar existencia del recurso. | EP07 |
-| TS02 | API de archivos y exportación | Como Developer, deseo incorporar material y generar exportaciones autorizadas para conservar procedencia y privacidad. | **Escenario 1.** Dado un archivo admitido y autorización, cuando se carga en un incidente, entonces responde 202 con estado pendiente de validación; solo queda disponible tras validación satisfactoria.<br>**Escenario 2.** Dado un archivo de más de 10 MB, cuando se envía, entonces responde 413; un formato no admitido responde 415.<br>**Escenario 3.** Dado permiso insuficiente, cuando se solicita una exportación, entonces responde 403 sin generar una copia. | EP07 |
-| TS03 | API de alertas y estados de entrega | Como Developer, deseo procesar alertas de forma idempotente para evitar avisos duplicados y estados falsos. | **Escenario 1.** Dada una solicitud válida con clave de idempotencia, cuando se repite POST de alerta con la misma carga y clave, entonces devuelve el mismo resultado sin duplicar avisos.<br>**Escenario 2.** Dada la misma clave con otra carga, cuando se reintenta, entonces responde 409.<br>**Escenario 3.** Dado un proveedor que confirma recepción técnica, cuando se procesa el evento, entonces no se registra lectura humana sin evidencia adicional. | EP07 |
-| TS04 | API de seguimiento y concurrencia | Como Developer, deseo actualizar actuaciones con control de versión para evitar pérdida de cambios y conservar auditoría. | **Escenario 1.** Dada una versión vigente y permiso, cuando se añade una actuación, entonces responde 201 y registra actor, momento y nueva versión.<br>**Escenario 2.** Dada una versión desactualizada, cuando se cambia responsable o estado, entonces responde 409 sin sobrescribir la actualización previa. | EP07 |
-| TS05 | API de recuperación y revocación | Como Developer, deseo verificar llaves y revocar sesiones para proteger el acceso de emergencia. | **Escenario 1.** Dada una llave válida y cuenta habilitada, cuando se solicita recuperación, entonces responde 200 con sesión restringida, vigencia y alcance explícitos.<br>**Escenario 2.** Dadas credenciales inválidas, cuando se procesa el intento, entonces responde 401 genérico; al exceder el umbral definido responde 429.<br>**Escenario 3.** Dada una sesión revocada, cuando se reutiliza, entonces responde 401 y no ejecuta ninguna acción. | EP07 |
-| TS06 | Autorización por recurso y organización | Como Developer, deseo aplicar permisos de propietario y ámbito para impedir acceso cruzado a información sensible. | **Escenario 1.** Dado un coordinador de organización A, cuando intenta consultar un incidente solo autorizado a B, entonces no obtiene datos ni metadatos de existencia.<br>**Escenario 2.** Dado un permiso caducado, cuando llega una nueva solicitud, entonces se deniega aunque el cliente conserve un enlace anterior. | EP07 |
-| TS07 | Integración cartográfica externa | Como Developer, deseo resolver zonas con un proveedor cartográfico externo para dar contexto geográfico controlando errores y exposición. | **Escenario 1.** Dada una zona pública y proveedor configurado, cuando se solicita geocodificación, entonces se obtiene ubicación normalizada con atribución del proveedor.<br>**Escenario 2.** Dado timeout o cuota agotada, cuando falla la consulta, entonces se mantiene el registro sin mapa y se informa indisponibilidad.<br>**Escenario 3.** Dado un incidente privado, cuando se invoca al proveedor, entonces no se envían relato, identidad ni adjuntos; el proveedor definitivo se selecciona antes de implementar. | EP07 |
-| TS08 | Contrato documentado y errores estables | Como Developer, deseo consultar documentación OpenAPI y respuestas consistentes para integrar y verificar la API. | **Escenario 1.** Dado un contrato publicado, cuando se consulta, entonces describe autenticación, parámetros, respuestas de éxito y errores de cada operación del MVP.<br>**Escenario 2.** Dado un error inesperado, cuando responde la API, entonces devuelve un código estable e identificador de correlación sin secretos ni trazas internas. | EP07 |
+| US01 | Conocer el servicio ciudadano | Como visitante ciudadano, quiero conocer qué hace MISTHY y sus límites para decidir si descargo la app. | **E1.** Dado un visitante sin sesión, cuando abre `misthy.pe`, entonces ve la propuesta «Tu ciudad te cuida», cómo funciona en 3 pasos y el CTA «Descargar app».<br>**E2.** Dado un visitante que lee los planes, cuando compara Free y Pro, entonces ve que pánico, acceso de emergencia, bloqueo y aviso a contactos son gratuitos y que no se promete recuperar el equipo. | EP01 |
+| US02 | Solicitar demo para mi organización | Como representante de una municipalidad o junta vecinal, quiero ver Misthy Command y los planes para solicitar una demo. | **E1.** Dado un visitante en «Soluciones» o «Misthy Command», cuando envía el formulario de contacto válido, entonces recibe un código de recepción.<br>**E2.** Dado un error de envío, cuando falla, entonces no se muestra como recibido y se ofrece reintentar. | EP01 |
+| US03 | Entrar a emergencia desde el landing | Como persona a quien le acaban de robar el celular, quiero encontrar el acceso de emergencia sin buscar. | **E1.** Dado cualquier ancho de pantalla, cuando se carga el landing, entonces el botón rojo «Emergencia» está visible en el header y lleva a `misthy.app/emergencia`. | EP01 |
+| US04 | Usar MISTHY en mi idioma y con teclado | Como usuario, quiero usar es-PE o en-US y operar con teclado y lector de pantalla. | **E1.** Dado un cambio de idioma, cuando se aplica, entonces se conservan los datos y cambian textos y mensajes.<br>**E2.** Dado un usuario de teclado, cuando realiza una tarea esencial, entonces ve el foco y entiende los estados sin depender del color. | EP01 |
+| US05 | Crear cuenta y configurar Llave Misthy | Como ciudadana, quiero crear mi cuenta y mi Llave Misthy para poder entrar desde otro equipo si me roban el celular. | **E1.** Dado un correo verificado, cuando completa el registro en la app, entonces se le pide crear una Llave Misthy de 12–16 caracteres distinta de su contraseña.<br>**E2.** Dada la Llave creada, cuando se guarda, entonces solo se almacena un hash y nunca aparece en logs. | EP02 |
+| US06 | Iniciar y cerrar sesión | Como usuario registrado, quiero autenticarme y cerrar sesión para controlar el acceso a mis datos. | **E1.** Dadas credenciales válidas, cuando inicia sesión, entonces solo accede a sus recursos.<br>**E2.** Dada una sesión cerrada o vencida, cuando pide un recurso, entonces se deniega. | EP02 |
+| US07 | Revocar sesiones y rotar mi Llave | Como titular, quiero cerrar los accesos anteriores y cambiar mi Llave Misthy tras un robo. | **E1.** Dado un titular verificado, cuando revoca sesiones, entonces las siguientes solicitudes con esas sesiones se rechazan.<br>**E2.** Dada una rotación de Llave, cuando termina, entonces la Llave anterior deja de funcionar. | EP02 |
+| US08 | Acceder en emergencia con mi Llave Misthy (UF1) | Como ciudadana sin mi celular, quiero entrar con mi correo y mi Llave Misthy desde un navegador prestado. | **E1.** Dado correo y Llave correctos, cuando envía el formulario (pantalla W1), entonces entra al panel de recuperación en el paso 2 de 2.<br>**E2.** Dada una Llave incorrecta, cuando falla, entonces ve los intentos restantes (W1b) sin revelar si la cuenta existe.<br>**E3.** Dados 3 intentos fallidos, cuando se intenta otra vez, entonces el acceso se pausa 15 min y se avisa al correo. | EP03 |
+| US09 | Ver el estado de mi dispositivo | Como ciudadana, quiero ver la conexión, batería y última ubicación de mi celular apenas entro al panel. | **E1.** Dado un equipo conectado, cuando abre el panel (W2), entonces ve «Última ubicación recibida a las HH:MM» y la batería.<br>**E2.** Dado un equipo sin conexión, cuando abre el panel, entonces ve «Dispositivo sin conexión. Mostramos la última ubicación disponible.» | EP03 |
+| US10 | Bloquear el celular robado (UF1) | Como ciudadana a quien le robaron el celular, quiero bloquearlo desde un navegador prestado para que el ladrón no pueda usarlo. | **E1.** Dado el panel abierto, cuando toca «Bloquear» y confirma (W3), entonces la orden queda «Pendiente de conexión» (W4) y cambia a «Confirmado por el dispositivo» (W4b) cuando el equipo responde; el equipo muestra «Dispositivo reportado — MISTHY».<br>**E2.** Dado un equipo sin conexión, cuando pasan 10 min sin respuesta, entonces ve «No se pudo ejecutar» (W4c) con «Reintentar» y «Avisar a PNP».<br>**E3.** Dado cualquier caso, cuando no hay confirmación del dispositivo, entonces nunca se muestra «bloqueado». | EP03 |
+| US11 | Hacer sonar la sirena | Como ciudadana, quiero activar una alarma al 100 % para ubicar el equipo cerca o disuadir al ladrón. | **E1.** Dado un equipo conectado, cuando activa «Sirena», entonces suena aunque esté en silencio y el estado pasa a confirmado.<br>**E2.** Dado un equipo sin conexión, cuando la activa, entonces queda pendiente con el mismo patrón de estados que el bloqueo. | EP03 |
+| US12 | Consultar la ubicación y el historial | Como ciudadana, quiero ver dónde está mi celular y su ruta reciente. | **E1.** Dado un equipo que reporta ubicación, cuando abre «Ubicación», entonces ve el punto actualizado cada 5–10 s con hora y precisión.<br>**E2.** Dado un filtro (última hora, hoy, 24 h), cuando lo aplica, entonces la línea de tiempo y los pines numerados del mapa se sincronizan. | EP03 |
+| US13 | Proteger la bóveda (UF3) | Como ciudadana, quiero borrar o congelar mis documentos sensibles para que nadie los use si desbloquean el equipo. | **E1.** Dado el panel, cuando toca «Bóveda», entonces se pide un código 2FA (W7).<br>**E2.** Dado un código válido y archivos seleccionados (W8), cuando toca «Borrar seleccionados» y escribe BORRAR (W9), entonces los archivos se eliminan; sin escribir BORRAR el botón queda deshabilitado.<br>**E3.** Dado que elige «Congelar acceso», cuando confirma, entonces la bóveda queda inaccesible y se puede revertir.<br>**E4.** Dados 3 códigos inválidos, cuando intenta otra vez, entonces la bóveda se bloquea 30 min. | EP03 |
+| US14 | Avisar a mis contactos desde el panel | Como ciudadana, quiero avisar a mi red de confianza desde la web para que sepan lo que pasó. | **E1.** Dados contactos aceptados, cuando toca «Contactos» y confirma, entonces reciben la alerta con la ubicación autorizada y se muestra «Tus contactos recibieron la alerta.» solo cuando hay confirmación de entrega.<br>**E2.** Dado que no tiene contactos aceptados, cuando intenta avisar, entonces se informa y no se simula el envío. | EP03 |
+| US15 | Enviar mi expediente a la PNP (UF2) | Como ciudadana víctima de robo, quiero enviar mi expediente con evidencias a la comisaría para iniciar la denuncia. | **E1.** Dado el panel, cuando toca «Avisar a PNP» (W5), entonces ve el expediente generado (ruta, fotos, audio, datos del equipo), elige la comisaría del sector y acepta la declaración.<br>**E2.** Dado el envío exitoso, cuando termina (W6), entonces recibe un código de expediente y los próximos pasos.<br>**E3.** Sin aceptar la declaración, el botón de envío queda deshabilitado; si el envío falla, ve «Reintentar» y «Descargar PDF». | EP04 |
+| US16 | Registrar un incidente privado | Como ciudadana, quiero registrar un robo, amenaza o presunta extorsión para ordenar mi información sin divulgarla. | **E1.** Dada una sesión, cuando registra categoría, relato y fecha (exacta o aproximada), entonces se crea un incidente privado con identificador.<br>**E2.** Dado un reporte sin adjuntos, cuando cumple los datos mínimos, entonces se acepta.<br>**E3.** Dada una presunta extorsión, cuando se registra, entonces nunca se publica en el mapa ni se envía a terceros sin su autorización. | EP04 |
+| US17 | Guardar documentos en la Bóveda (M6) | Como ciudadana, quiero guardar mi DNI, fotos y credenciales cifrados para tenerlos protegidos y disponibles. | **E1.** Dado un archivo PDF, JPEG o PNG de hasta 10 MB, cuando lo sube, entonces se cifra con AES-256 y registra nombre, tamaño, fecha y huella de integridad.<br>**E2.** Dado un archivo no admitido, cuando lo intenta subir, entonces se rechaza con el motivo. | EP04 |
+| US18 | Seguir el estado de mi expediente | Como ciudadana, quiero saber si la central recibió, revisó o exportó mi expediente. | **E1.** Dado un expediente enviado, cuando lo consulta, entonces ve su estado (Recibido, Revisado, Exportado) con fecha.<br>**E2.** Dado que la central pide información faltante, cuando la consulta, entonces ve qué falta y puede añadirla. | EP04 |
+| US19 | Revisar y exportar un expediente PNP (UF6) | Como operador, quiero revisar el expediente que envió una ciudadana y exportarlo para la comisaría. | **E1.** Dado «Expedientes PNP» (C5), cuando abre EXP-2026-00148, entonces ve en el panel lateral (C5b) la ruta, las evidencias y la alerta vinculada.<br>**E2.** Dado un expediente completo, cuando toca «Exportar PDF» o «Marcar revisado», entonces cambia de estado y queda registrado quién lo hizo.<br>**E3.** Dado que falta información (DNI o audio), cuando lo detecta, entonces solicita el dato a la ciudadana y el estado queda «Recibido». | EP04 |
+| US20 | Activar el pánico sin desbloquear | Como ciudadana en peligro, quiero activar una alerta con triple pulso del botón de volumen o un gesto del smartwatch. | **E1.** Dada la app configurada, cuando presiona tres veces el botón de volumen, entonces se envía la alerta con GPS a contactos y a la central, sin abrir la app.<br>**E2.** Dada una activación accidental, cuando la cancela en los primeros 5 s con su PIN, entonces no se envía. | EP05 |
+| US21 | Grabar audio y compartir ubicación en vivo | Como ciudadana, quiero que el pánico grabe audio cifrado y comparta mi ubicación en vivo. | **E1.** Dada una alerta activa, cuando se inicia, entonces graba hasta 10 min de audio cifrado y lo guarda en la Bóveda.<br>**E2.** Dada una alerta activa, cuando mis contactos la abren, entonces ven mi ubicación con hora; si se interrumpe, ven la antigüedad del último dato. | EP05 |
+| US22 | Invitar un contacto de confianza | Como ciudadana, quiero invitar a personas de confianza para que reciban mis alertas. | **E1.** Dado un medio de contacto válido, cuando envía la invitación, entonces queda pendiente hasta que la acepten.<br>**E2.** Dada una invitación rechazada o vencida, cuando se envía una alerta, entonces ese contacto no se incluye. | EP05 |
+| US23 | Aceptar o rechazar una invitación | Como contacto invitado, quiero decidir si participo y poder retirarme. | **E1.** Dada una invitación vigente, cuando acepta, entonces se registra su consentimiento con fecha.<br>**E2.** Dado un contacto aceptado, cuando se retira, entonces deja de recibir alertas. | EP05 |
+| US24 | Ver el Mapa Vivo y alertas de zona roja | Como ciudadana, quiero saber si entro a una zona roja para tomar precauciones. | **E1.** Dado el mapa abierto, cuando lo consulta, entonces ve el mapa de calor de delitos verificados con fecha y antigüedad.<br>**E2.** Dada la ubicación activa, cuando entra a una zona roja, entonces recibe una alerta de voz o vibración.<br>**E3.** Dada una zona sin reportes, cuando la consulta, entonces se informa «sin reportes», no «zona segura». | EP06 |
+| US25 | Encontrar un Punto Misthy | Como ciudadana que se siente seguida, quiero ir al comercio refugio más cercano. | **E1.** Dada mi ubicación, cuando pido «Punto Misthy más cercano», entonces veo la ruta y el horario del comercio aliado. | EP06 |
+| US26 | Reportar un incidente en mi barrio | Como vecina, quiero reportar un incidente con evidencia para alertar a la comunidad. | **E1.** Dado un reporte con tipo, zona y evidencia opcional, cuando lo envía, entonces queda «Por verificar» y no se publica hasta ser verificado.<br>**E2.** Dado un reporte de extorsión, cuando lo envía, entonces se trata como incidente privado y nunca se publica. | EP06 |
+| US27 | Verificar un reporte comunitario (UF5) | Como supervisora, quiero validar los reportes vecinales con evidencia para publicar solo información confiable en el mapa. | **E1.** Dado «Reportes» (C4) filtrado por evidencia, cuando revisa R-311 y toca «Verificar», entonces se publica en el Mapa Vivo, la vecina recibe puntos y un banner ofrece deshacer (C4b).<br>**E2.** Dada evidencia insuficiente o un duplicado, cuando toca «Descartar», entonces debe indicar motivo y el vecino recibe la notificación. | EP06 |
+| US28 | Ganar puntos y badges | Como vecina, quiero recibir puntos y badges cuando mis reportes se verifican. | **E1.** Dado un reporte verificado, cuando se publica, entonces suma puntos a su perfil y puede desbloquear badges como «Explorador Seguro».<br>**E2.** Dado el ranking vecinal, cuando se muestra, entonces usa alias y no datos personales. | EP06 |
+| US29 | Viajar en Modo Viaje Seguro | Como pasajera, quiero que mis contactos sean avisados si el taxi se desvía y no respondo. | **E1.** Dado un viaje iniciado con placa escaneada y destino, cuando el vehículo sale de la geocerca, entonces la app pregunta si estoy bien.<br>**E2.** Dado que no respondo en 20 s, cuando vence el tiempo, entonces se alerta a mis contactos con la placa y la ubicación. | EP07 |
+| US30 | Usar un PIN de coacción | Como ciudadana obligada a desbloquear mi celular, quiero ingresar un PIN falso que alerte en silencio. | **E1.** Dado el PIN de coacción configurado, cuando lo ingreso, entonces se abre una pantalla señuelo y en segundo plano se activa el Lockdown silencioso y la alerta a contactos y central.<br>**E2.** Dada la pantalla señuelo, cuando alguien la usa, entonces no aparece ningún indicio de la alerta. | EP07 |
+| US31 | Usar el Falso Acompañante | Como ciudadana que camina sola, quiero simular una llamada o videollamada para disuadir a quien me sigue. | **E1.** Dado el módulo activo, cuando lo inicio, entonces recibo una llamada simulada con voz IA en menos de 3 s.<br>**E2.** Dada la llamada en curso, cuando presiono el botón de pánico, entonces se activa la alerta sin cortar la simulación. | EP07 |
+| US32 | Detectar un «jalón» y tomar fotos stealth | Como ciudadana, quiero que la app detecte un arrebato y fotografíe a quien tiene el equipo. | **E1.** Dado el anti-robo activo, cuando los sensores detectan un arrebato, entonces se envía una alerta y se activa el seguimiento.<br>**E2.** Dado un Lockdown activo, cuando alguien intenta desbloquear, entonces se toma una foto con la cámara frontal y se sube al panel de recuperación. | EP08 |
+| US33 | Localizar mi celular sin datos con la Red Mesh | Como ciudadana, quiero que mi celular robado siga siendo ubicable aunque no tenga datos. | **E1.** Dado un equipo sin datos que emite Bluetooth, cuando otro usuario MISTHY pasa cerca, entonces su app retransmite la señal cifrada y el panel muestra la ubicación con hora.<br>**E2.** Dado un equipo apagado, cuando consulto el panel, entonces veo la última ubicación, batería y dirección de movimiento enviadas antes del apagado. | EP08 |
+| US34 | Pedir mi Llave para apagar el celular | Como ciudadana, quiero que al intentar apagar mi celular se pida mi Llave Misthy. | **E1.** Dado Android con Device Admin activo, cuando se abre el menú de apagado, entonces se pide la Llave Misthy.<br>**E2.** Dado iOS, cuando se configura, entonces la app explica que esta protección no está disponible. | EP08 |
+| US35 | Iniciar sesión en Command con 2FA | Como operador, quiero entrar a Misthy Command con 2FA para proteger la información de la central. | **E1.** Dadas credenciales y código válidos, cuando inicia sesión (C1), entonces entra al monitor según su rol.<br>**E2.** Dados 5 códigos inválidos, cuando intenta otra vez, entonces la cuenta se bloquea temporalmente. | EP09 |
+| US36 | Monitorear alertas por severidad | Como operador, quiero ver el mapa distrital y la cola de alertas ordenada por severidad y antigüedad. | **E1.** Dadas alertas activas, cuando abre el monitor (C2), entonces la cola muestra S5 Crítica arriba, con número, etiqueta y color.<br>**E2.** Dados filtros de severidad, estado, sector o tipo, cuando los aplica, entonces el mapa muestra solo lo filtrado y los chips se pueden quitar. | EP09 |
+| US37 | Atender una alerta crítica y despachar (UF4) | Como operador de serenazgo, quiero atender la alerta más grave y enviar al sereno más cercano para reducir el tiempo de respuesta. | **E1.** Dada A-2041 (S5), cuando la abre (C3), entonces el detalle aparece junto al mapa con evidencia y serenos cercanos.<br>**E2.** Dado SZ-07 disponible, cuando toca «Despachar» (atajo `D`), entonces la alerta pasa a «despachada» con ruta y tiempo estimado (C3b), y luego a «en sitio».<br>**E3.** Dado que no hay serenos disponibles, cuando intenta despachar, entonces puede escalar a la PNP o asignar una unidad de otro sector. | EP09 |
+| US38 | Cerrar una alerta o marcar falsa alarma | Como operador, quiero cerrar una alerta con motivo para mantener la cola limpia y medir falsos positivos. | **E1.** Dada una alerta en sitio, cuando la cierra, entonces registra motivo, responsable y hora.<br>**E2.** Dada una falsa alarma, cuando la marca, entonces se cierra con ese motivo y cuenta en la métrica de falsos positivos. | EP09 |
+| US39 | Analizar patrones y riesgo | Como supervisora, quiero ver patrones por hora, zona y tipo de delito y la predicción de riesgo para planificar el patrullaje. | **E1.** Dado un rango de fechas, cuando abre «Analítica» (C6), entonces ve KPIs, horas críticas, zonas y tipos de delito.<br>**E2.** Dada la predicción de riesgo, cuando se muestra, entonces indica el periodo de datos y que es una estimación. | EP10 |
+| US40 | Administrar roles, cobertura y Puntos Misthy | Como administrador municipal, quiero gestionar usuarios, sectores y comercios refugio. | **E1.** Dado un administrador, cuando asigna el rol operador, supervisor o admin, entonces el usuario solo ve los módulos de su rol.<br>**E2.** Dado un comercio aliado, cuando lo registra como Punto Misthy, entonces aparece en el Mapa Vivo con horario. | EP10 |
+
+### Historias técnicas
+
+| Story ID | Título | Descripción | Criterios de aceptación | Epic |
+|---|---|---|---|---|
+| TS01 | API de cuentas y Llave Misthy | Como Developer, quiero verificar la Llave Misthy y emitir sesiones de emergencia restringidas. | **E1.** Dados correo y Llave válidos, cuando se llama `POST /api/v1/emergency/sessions`, entonces responde 200 con una sesión limitada y su vigencia.<br>**E2.** Dadas credenciales inválidas, responde 401 genérico; al superar el umbral responde 429. | EP11 |
+| TS02 | API de órdenes remotas | Como Developer, quiero enviar órdenes al dispositivo con estados verificables e idempotencia. | **E1.** Dada una orden con clave de idempotencia, cuando se repite, entonces no se duplica.<br>**E2.** Dado el acuse del dispositivo, cuando llega, entonces el estado pasa a `confirmed`; sin acuse en 10 min pasa a `failed`. | EP11 |
+| TS03 | Canal en tiempo real | Como Developer, quiero publicar ubicaciones, alertas y estados en tiempo real (Firebase o Supabase). | **E1.** Dado un cambio de estado, cuando se publica, entonces el panel y Command lo reciben en menos de 2 s en condiciones normales.<br>**E2.** Dada una desconexión, cuando se recupera, entonces el cliente sincroniza el último estado. | EP11 |
+| TS04 | API de expedientes y archivos | Como Developer, quiero generar expedientes PDF y gestionar archivos con autorización. | **E1.** Dado un archivo de más de 10 MB, responde 413; un formato no admitido, 415.<br>**E2.** Dado permiso insuficiente, cuando se pide un expediente, entonces responde 403 sin generarlo. | EP11 |
+| TS05 | API de alertas y despacho | Como Developer, quiero asignar unidades con control de concurrencia. | **E1.** Dada una versión vigente, cuando se despacha, entonces responde 201 y registra actor y hora.<br>**E2.** Dada una versión desactualizada, cuando dos operadores despachan a la vez, entonces el segundo recibe 409. | EP11 |
+| TS06 | Autorización por rol y organización | Como Developer, quiero aplicar permisos por propietario, rol y municipalidad. | **E1.** Dado un operador de la municipalidad A, cuando consulta una alerta de B, entonces no obtiene datos ni confirma su existencia. | EP11 |
+| TS07 | Integración cartográfica | Como Developer, quiero mapas y geocodificación de un proveedor externo sin enviar datos privados. | **E1.** Dado un timeout del proveedor, cuando falla, entonces el registro se guarda sin mapa y se informa.<br>**E2.** Dado un incidente privado, cuando se geocodifica, entonces no se envía relato ni identidad. | EP11 |
+| TS08 | OpenAPI y errores estables | Como Developer, quiero un contrato OpenAPI y errores con código estable e ID de correlación. | **E1.** Dado el contrato publicado, cuando se consulta, entonces describe autenticación, parámetros y respuestas de cada operación.<br>**E2.** Dado un error inesperado, cuando responde la API, entonces no expone trazas ni secretos. | EP11 |
+| TS09 | Cifrado de la Bóveda | Como Developer, quiero cifrar la bóveda con AES-256 y gestionar llaves por usuario. | **E1.** Dado un archivo subido, cuando se almacena, entonces queda cifrado en reposo con una llave por usuario.<br>**E2.** Dado un borrado confirmado, cuando se ejecuta, entonces la llave y el archivo se eliminan. | EP11 |
+| TS10 | Prueba técnica de Red Mesh BLE | Como Developer, quiero validar la retransmisión Bluetooth cifrada en Android antes de comprometer la función. | **E1.** Dados dos equipos de prueba, cuando uno sin datos emite y el otro retransmite, entonces el servidor recibe la ubicación cifrada y el resultado queda documentado. | EP11 |
 
 <a id="impact"></a>
 ## 3.2. Impact Mapping
 
-Se proponen tres metas SMART para un piloto limitado. Día 0 comienza cuando existan participantes consentidos, capacidad operativa y aprobación del fundador. Los umbrales son objetivos experimentales, no logros alcanzados. P1 y P2 son las proto-personas del capítulo II y necesitan validación.
+Tres metas SMART para el piloto de 60 días en VES. Los actores son las personas del capítulo II.
 
-| Business goal | Actor / persona | Impact: cambio de comportamiento esperado | Deliverable | Historias relacionadas, expresadas como intención |
+| Business goal | Actor | Impacto esperado | Deliverable | User stories |
 |---|---|---|---|---|
-| G01: conseguir que 40 de 50 ciudadanos invitados configuren un contacto aceptado antes del día 30. | P1 — Ciudadano; contacto como actor de apoyo. | Prepara su apoyo antes de necesitarlo y comprende límites. | Información del servicio y red aceptada. | US01: Como visitante ciudadano deseo conocer alcance y límites para decidir si responde a mi necesidad. US05: Como ciudadano deseo invitar a una persona de confianza para preparar mi red. US06: Como contacto deseo decidir si participo para controlar mis datos. |
-| G02: antes del día 45, al menos 8 de 10 participantes completan cada tarea controlada de registro privado y recuperación, con límites de 5 y 3 minutos respectivamente. | P1 — Ciudadano. | Organiza información y recupera control sin divulgar datos. | Registro privado, permisos y recuperación. | US03: Como ciudadano deseo registrar un incidente para organizar información sin divulgarla. US17: Como titular deseo recuperar acceso desde otro equipo para recuperar control. US19: Como ciudadano deseo gestionar permisos para decidir quién conoce mis datos. |
-| G03: antes del día 60, 4 de 5 coordinadores completan una tarea de seguimiento y dos organizaciones aceptan continuar evaluando el piloto. | P2 — Coordinador; P1 como participante del seguimiento. | Mantiene responsable y próxima acción, y distingue cierre interno de resolución oficial. | Seguimiento, exportación y cierre trazable. | US10: Como ciudadano deseo conocer responsable y pendientes para reducir incertidumbre. US11: Como coordinador deseo asignar responsables para mantener continuidad. US12: Como coordinador deseo registrar actuaciones para verificarlas. US24: Como usuario autorizado deseo cerrar y reabrir para mantener continuidad. |
-
-La medición de G02 informa resultados por tarea y no mezcla sus denominadores. Para G03, intención de continuar no equivale a venta. Las pruebas usan casos ficticios y no activan avisos reales a autoridades. H02, H06 y H07 se conservan como pruebas de comprensión complementarias del capítulo I.
+| G01: 40 de 50 ciudadanos invitados configuran Llave Misthy y un contacto aceptado antes del día 30. | Lucía (ciudadana) | Se prepara antes de necesitarlo. | Registro, Llave Misthy, red de confianza, landing. | US01, US05, US22, US23 |
+| G02: antes del día 45, 8 de 10 participantes bloquean su celular desde un navegador prestado en ≤3 min y envían su expediente a la PNP sin ayuda. | Lucía (ciudadana) | Recupera el control y denuncia con evidencia. | Acceso de emergencia, bloqueo, bóveda y expediente (UF1–UF3). | US08, US10, US13, US15 |
+| G03: antes del día 60, el tiempo mediano entre una alerta S5 y el despacho baja frente a la semana 5, y la municipalidad acepta continuar con Misthy Command. | Carlos (operador) y Rosa (supervisora) | Atienden primero lo grave y publican solo información confiable. | Monitor, despacho, reportes y expedientes (UF4–UF6). | US36, US37, US27, US19 |
 
 ```mermaid
 flowchart LR
-  gOne["G01: 40 de 50 activaciones al día 30"] --> pOne["P1: prepara su red"]
-  pOne --> network["Red con consentimiento"]
-  network --> networkStories["US01, US05, US06"]
-  gTwo["G02: 8 de 10 completan tareas al día 45"] --> control["P1: conserva control"]
-  control --> privateCase["Registro privado y recuperación"]
-  privateCase --> privateStories["US03, US17, US19"]
-  gThree["G03: continuidad con 2 organizaciones al día 60"] --> pTwo["P2: mantiene seguimiento"]
-  pTwo --> tracking["Responsable y cronología"]
-  tracking --> trackingStories["US10, US11, US12, US24"]
+  g1["G01: 40/50 con Llave y contacto al día 30"] --> lucia1["Lucía: se prepara"]
+  lucia1 --> d1["Registro, Llave Misthy y red"]
+  d1 --> s1["US01, US05, US22, US23"]
+  g2["G02: 8/10 bloquean y denuncian al día 45"] --> lucia2["Lucía: recupera el control"]
+  lucia2 --> d2["Misthy Web: UF1, UF2, UF3"]
+  d2 --> s2["US08, US10, US13, US15"]
+  g3["G03: menos tiempo a despacho al día 60"] --> carlos["Carlos: despacha más rápido"]
+  g3 --> rosa["Rosa: publica solo lo verificado"]
+  carlos --> d3["Command: UF4, UF6"]
+  rosa --> d4["Command: UF5"]
+  d3 --> s3["US36, US37, US19"]
+  d4 --> s4["US27"]
 ```
-
-Es un mapa documental editable en Mermaid, no una captura de UXPressia ni una sesión de Figma. Las relaciones son hipótesis de contribución que se revisan después de las entrevistas.
 
 <a id="backlog"></a>
 ## 3.3. Product Backlog
 
-El orden refleja valor de negocio y aprendizaje; las primeras entradas se centran en organizar y seguir incidentes. La autenticación es una dependencia de ejecución, pero no se utiliza para encabezar artificialmente el ranking de valor. Story Points: 1, 2, 3, 5 u 8. Son estimaciones iniciales relativas de CODERT0PH, no horas, velocidad medida ni compromiso de fecha.
+Ordenado por valor para el MVP del capítulo I: primero la recuperación desde Misthy Web y el pánico, después Command y al final los módulos de fase 2. Story Points en escala 1, 2, 3, 5, 8 (estimaciones iniciales del autor).
 
-| # Orden | User Story ID | Título | Descripción | Story Points |
+| Orden | ID | Título | Story Points | Fase |
 |---|---|---|---|---|
-| 1 | US03 | Registrar un incidente privado | Como ciudadano, deseo registrar un robo, amenaza o presunta extorsión para organizar mi información sin divulgarla. | 5 |
-| 2 | US07 | Consultar y corregir la cronología | Como ciudadano, deseo ordenar hechos y actuaciones de mi incidente para comprender qué ocurrió y qué se ha hecho. | 5 |
-| 3 | US04 | Solicitar apoyo a la red | Como ciudadano, deseo avisar a mis contactos aceptados para pedir apoyo y conocer el resultado del envío. | 5 |
-| 4 | US10 | Consultar seguimiento y pendientes | Como ciudadano, deseo conocer responsable, última actuación y próximo paso para reducir incertidumbre sobre mi solicitud. | 5 |
-| 5 | US01 | Conocer el servicio ciudadano | Como visitante ciudadano, deseo conocer el alcance, límites y acceso al servicio para decidir si responde a mi necesidad. | 3 |
-| 6 | US02 | Evaluar coordinación organizacional | Como visitante de una organización, deseo conocer condiciones y solicitar información de un piloto para evaluar su utilidad para mi organización. | 3 |
-| 7 | US05 | Invitar un contacto de confianza | Como ciudadano, deseo invitar a una persona de confianza para preparar mi red de apoyo. | 3 |
-| 8 | US06 | Aceptar o rechazar una invitación | Como contacto invitado, deseo decidir si participo y retirar mi aceptación para controlar mi disponibilidad y mis datos. | 3 |
-| 9 | US19 | Gestionar permisos de acceso | Como ciudadano, deseo autorizar y revocar acceso limitado a mi incidente para decidir quién conoce mis datos. | 5 |
-| 10 | US11 | Asignar responsable local | Como coordinador autorizado, deseo asignar o transferir seguimiento para evitar solicitudes sin continuidad. | 5 |
-| 11 | US12 | Registrar actuaciones y recordatorios | Como coordinador autorizado, deseo registrar acciones y próximos pasos para mantener un seguimiento verificable. | 5 |
-| 12 | US14 | Priorizar con criterios explícitos | Como coordinador autorizado, deseo clasificar urgencia y registrar el motivo para organizar atención sin favorecer a quien paga más. | 5 |
-| 13 | US17 | Recuperar acceso con Llave Misthy | Como titular de cuenta, deseo acceder desde otro equipo con una llave de recuperación para recuperar control si pierdo mi dispositivo habitual. | 8 |
-| 14 | US18 | Revocar sesiones de MISTHY | Como titular de cuenta, deseo cerrar accesos anteriores y rotar mi llave para reducir exposición tras una pérdida. | 5 |
-| 15 | US08 | Conservar material de respaldo | Como ciudadano, deseo adjuntar archivos privados de forma voluntaria para mantener información relacionada con el incidente. | 5 |
-| 16 | US09 | Exportar una copia del caso | Como ciudadano, deseo seleccionar información y exportar un resumen para compartir una copia ordenada bajo mi responsabilidad. | 5 |
-| 17 | US13 | Añadir referencias externas | Como ciudadano, deseo registrar una constancia o referencia de gestión externa para relacionar mis gestiones sin confundirlas con el registro interno. | 3 |
-| 18 | US24 | Cerrar y reabrir seguimiento | Como ciudadano o coordinador autorizado, deseo registrar cierre o reapertura con motivo para mantener continuidad sin confundir cierre interno con justicia obtenida. | 3 |
-| 19 | US23 | Compartir ubicación con consentimiento | Como ciudadano, deseo aportar ubicación a una solicitud autorizada para dar contexto sin perder control sobre el seguimiento. | 5 |
-| 20 | US15 | Moderar avisos comunitarios | Como moderador autorizado, deseo revisar avisos antes de publicación para reducir exposición e información engañosa. | 5 |
-| 21 | US16 | Consultar avisos del entorno | Como ciudadano, deseo consultar avisos moderados con fecha y zona para informarme sin confundir reportes con seguridad garantizada. | 5 |
-| 22 | US22 | Usar una experiencia comprensible y accesible | Como usuario, deseo consultar el servicio en español o inglés y operar con teclado para utilizarlo según mis necesidades. | 5 |
-| 23 | US20 | Crear y preparar una cuenta | Como ciudadano, deseo crear mi cuenta y configurar recuperación para preparar el uso del servicio. | 5 |
-| 24 | US21 | Acceder y cerrar sesión | Como usuario registrado, deseo autenticarme y cerrar mi sesión para usar mis recursos con control de acceso. | 5 |
-| 25 | TS01 | API de incidentes y cronología | Como Developer, deseo crear y consultar incidentes mediante contratos consistentes para integrar las experiencias web. | 5 |
-| 26 | TS06 | Autorización por recurso y organización | Como Developer, deseo aplicar permisos de propietario y ámbito para impedir acceso cruzado a información sensible. | 5 |
-| 27 | TS03 | API de alertas y estados de entrega | Como Developer, deseo procesar alertas de forma idempotente para evitar avisos duplicados y estados falsos. | 8 |
-| 28 | TS04 | API de seguimiento y concurrencia | Como Developer, deseo actualizar actuaciones con control de versión para evitar pérdida de cambios y conservar auditoría. | 5 |
-| 29 | TS05 | API de recuperación y revocación | Como Developer, deseo verificar llaves y revocar sesiones para proteger el acceso de emergencia. | 8 |
-| 30 | TS02 | API de archivos y exportación | Como Developer, deseo incorporar material y generar exportaciones autorizadas para conservar procedencia y privacidad. | 8 |
-| 31 | TS07 | Integración cartográfica externa | Como Developer, deseo resolver zonas con un proveedor cartográfico externo para dar contexto geográfico controlando errores y exposición. | 5 |
-| 32 | TS08 | Contrato documentado y errores estables | Como Developer, deseo consultar documentación OpenAPI y respuestas consistentes para integrar y verificar la API. | 3 |
+| 1 | US05 | Crear cuenta y configurar Llave Misthy | 5 | MVP |
+| 2 | US08 | Acceder en emergencia con mi Llave Misthy (UF1) | 5 | MVP |
+| 3 | US09 | Ver el estado de mi dispositivo | 3 | MVP |
+| 4 | US10 | Bloquear el celular robado (UF1) | 8 | MVP |
+| 5 | US11 | Hacer sonar la sirena | 3 | MVP |
+| 6 | US12 | Consultar la ubicación y el historial | 5 | MVP |
+| 7 | US13 | Proteger la bóveda (UF3) | 8 | MVP |
+| 8 | US15 | Enviar mi expediente a la PNP (UF2) | 8 | MVP |
+| 9 | US20 | Activar el pánico sin desbloquear | 8 | MVP |
+| 10 | US21 | Grabar audio y compartir ubicación en vivo | 5 | MVP |
+| 11 | US22 | Invitar un contacto de confianza | 3 | MVP |
+| 12 | US23 | Aceptar o rechazar una invitación | 2 | MVP |
+| 13 | US14 | Avisar a mis contactos desde el panel | 3 | MVP |
+| 14 | US17 | Guardar documentos en la Bóveda (M6) | 5 | MVP |
+| 15 | US24 | Ver el Mapa Vivo y alertas de zona roja | 8 | MVP |
+| 16 | US32 | Detectar un «jalón» y tomar fotos stealth | 8 | MVP |
+| 17 | US06 | Iniciar y cerrar sesión | 3 | MVP |
+| 18 | US07 | Revocar sesiones y rotar mi Llave | 3 | MVP |
+| 19 | US01 | Conocer el servicio ciudadano | 3 | MVP |
+| 20 | US03 | Entrar a emergencia desde el landing | 1 | MVP |
+| 21 | US04 | Usar MISTHY en mi idioma y con teclado | 5 | MVP |
+| 22 | US35 | Iniciar sesión en Command con 2FA | 3 | Piloto |
+| 23 | US36 | Monitorear alertas por severidad | 8 | Piloto |
+| 24 | US37 | Atender una alerta crítica y despachar (UF4) | 8 | Piloto |
+| 25 | US38 | Cerrar una alerta o marcar falsa alarma | 2 | Piloto |
+| 26 | US19 | Revisar y exportar un expediente PNP (UF6) | 5 | Piloto |
+| 27 | US18 | Seguir el estado de mi expediente | 3 | Piloto |
+| 28 | US26 | Reportar un incidente en mi barrio | 3 | Piloto |
+| 29 | US27 | Verificar un reporte comunitario (UF5) | 5 | Piloto |
+| 30 | US28 | Ganar puntos y badges | 3 | Piloto |
+| 31 | US16 | Registrar un incidente privado | 5 | Piloto |
+| 32 | US02 | Solicitar demo para mi organización | 2 | Piloto |
+| 33 | US25 | Encontrar un Punto Misthy | 3 | Piloto |
+| 34 | US40 | Administrar roles, cobertura y Puntos Misthy | 5 | Piloto |
+| 35 | US39 | Analizar patrones y riesgo | 8 | Fase 2 |
+| 36 | US29 | Viajar en Modo Viaje Seguro | 8 | Fase 2 |
+| 37 | US30 | Usar un PIN de coacción | 8 | Fase 2 |
+| 38 | US31 | Usar el Falso Acompañante | 8 | Fase 2 |
+| 39 | US33 | Localizar mi celular sin datos con la Red Mesh | 8 | Fase 2 |
+| 40 | US34 | Pedir mi Llave para apagar el celular | 5 | Fase 2 |
+| 41 | TS01 | API de cuentas y Llave Misthy | 5 | MVP |
+| 42 | TS02 | API de órdenes remotas | 8 | MVP |
+| 43 | TS03 | Canal en tiempo real | 5 | MVP |
+| 44 | TS04 | API de expedientes y archivos | 5 | MVP |
+| 45 | TS06 | Autorización por rol y organización | 5 | MVP |
+| 46 | TS08 | OpenAPI y errores estables | 3 | MVP |
+| 47 | TS09 | Cifrado de la Bóveda | 5 | MVP |
+| 48 | TS07 | Integración cartográfica | 3 | MVP |
+| 49 | TS05 | API de alertas y despacho | 5 | Piloto |
+| 50 | TS10 | Prueba técnica de Red Mesh BLE | 8 | Fase 2 |
 
-**Total exploratorio: 158 Story Points**, sin sumar épicas. Todas las historias están en estado **Propuesta**. Ninguna figura como implementada.
+**Total: 254 Story Points** (MVP 141, piloto 60, fase 2 53). Todas las historias están en estado **Propuesta**.
 
-### Dependencias y secuencia propuesta
+| Fase | Resultado observable | Dependencia |
+|---|---|---|
+| MVP (semanas 1–4) | La ciudadana se prepara en la app, pide ayuda con el pánico y, si le roban el celular, lo bloquea, protege la bóveda y envía el expediente desde Misthy Web. | TS01–TS04, TS06–TS09. |
+| Piloto (semanas 5–8) | El serenazgo atiende y despacha desde Command, revisa expedientes y verifica reportes comunitarios. | TS05, acuerdo con la municipalidad y la comisaría del sector. |
+| Fase 2 | Viaje Seguro, PIN de coacción, Falso Acompañante, Red Mesh, kiosk de apagado y analítica predictiva. | TS10 y resultados de H10–H11. |
 
-| Incremento | Resultado observable | Historias | Dependencia / condición |
-|---|---|---|---|
-| A — Validación inicial | Landing y registro privado con cronología accesible en entorno controlado. | US01, US02, US03, US07, US19, US20, US21, US22; TS01, TS06, TS08. | Cuenta y autorización se implementan antes de exponer datos reales. Landing incluida desde el primer incremento. |
-| B — Apoyo y coordinación | Red aceptada, avisos y seguimiento con responsable. | US04, US05, US06, US10, US11, US12, US14, US23, US24; TS03, TS04. | Proveedor de avisos, consentimientos y política operativa definidos. |
-| C — Recuperación y respaldo | Recuperación controlada, revocación, archivos, referencias y exportación. | US08, US09, US13, US17, US18; TS02, TS05. | Segundo factor, análisis de archivos y política de retención definidos. |
-| D — Comunidad | Avisos moderados con ubicación general y control de publicación. | US15, US16; TS07. | Moderación disponible, proveedor cartográfico y reglas de anonimización revisados. |
-
-Los incrementos no equivalen a sprints fechados. Se seleccionará capacidad después de medir trabajo real; no se promete construir 32 historias en cuatro semanas. Una historia no se considera terminada si su aceptación depende de una integración aún simulada sin declararlo.
-
-### Gestión del backlog
-
-Este Markdown es el backlog inicial versionado y revisable en la rama `feature-capitulo3`. No se ha creado un tablero externo ni se inventa un enlace a Trello, Jira o YouTrack. Si se adopta uno, se mantendrán los mismos identificadores y se documentará su URL real.
+El backlog vive en este Markdown y en la rama `feature-capitulo3`. Si se adopta un tablero (Trello, Jira o GitHub Projects), se mantendrán los mismos identificadores.
 
 <a id="restricciones"></a>
-## Restricciones, trazabilidad y preparación del diseño
+## Requisitos no funcionales y trazabilidad
 
-### Requisitos transversales propuestos
+### Requisitos no funcionales
 
-| ID | Requisito verificable | Verificación prevista |
+| ID | Requisito | Verificación |
 |---|---|---|
-| RNF01 | Propietario, destinatario y organización solo acceden al alcance autorizado. | Matriz de permisos con accesos permitidos, denegados, revocados y entre organizaciones. |
-| RNF02 | Secretos y archivos privados no aparecen en logs, enlaces públicos o mapas. | Revisión de respuestas, registros y recursos publicados con datos de prueba. |
-| RNF03 | Las acciones relevantes conservan actor, fecha, origen y motivo de corrección. | Reconstrucción de un caso de prueba desde creación a reapertura. |
-| RNF04 | Estados de conexión, entrega y atención son distinguibles y no se simulan. | Casos de éxito, timeout, rechazo y ausencia de confirmación. |
-| RNF05 | Flujos esenciales funcionan por teclado, con nombres accesibles, foco visible y sin depender del color; objetivo WCAG 2.2 AA. | Revisión automática y manual con lector de pantalla; no se declara cumplimiento sin pruebas. |
-| RNF06 | Fechas se almacenan de forma inequívoca y se presentan con zona horaria; interfaz inicial es-PE y alternativa en-US. | Pruebas de fecha, traducción y cambio de idioma sin pérdida de información. |
-| RNF07 | Objetivo inicial de latencia p95 ≤2 s en operaciones simples con 20 usuarios concurrentes, excluyendo adjuntos y proveedores externos. | Prueba de carga con entorno y conjunto de datos documentados; es una meta, no rendimiento medido. |
-| RNF08 | Reintentos no duplican alertas; se conserva recuperación documentada de datos. | Prueba de idempotencia y restauración antes del piloto; objetivos iniciales RPO 24 h y RTO 8 h, sujetos a capacidad. |
-| RNF09 | Material de presunta extorsión no se publica; no se prioriza por plan de pago. | Casos negativos de publicación y comparación de solicitudes equivalentes. |
-
-Las referencias técnicas siguientes describen estándares propuestos, no capacidades ya implementadas: [WCAG 2.2](https://www.w3.org/TR/WCAG22/) y [OpenAPI](https://spec.openapis.org/oas/latest.html). La selección de proveedor, retención, segundo factor y umbrales de limitación requiere decisión antes de implementar las historias afectadas.
+| RNF01 | Cada usuario, rol y municipalidad solo accede a lo autorizado. | Matriz de permisos con casos permitidos y denegados. |
+| RNF02 | La Llave Misthy, los archivos de la bóveda y los audios nunca aparecen en logs, enlaces públicos ni en el mapa. | Revisión de respuestas, registros y recursos publicados. |
+| RNF03 | Las acciones relevantes registran actor, hora, origen y motivo. | Reconstrucción de un caso de prueba completo. |
+| RNF04 | Ninguna orden remota, alerta o envío se muestra como ejecutado sin confirmación. | Casos de éxito, timeout, rechazo y sin conexión. |
+| RNF05 | WCAG 2.1 AA: contraste 4.5:1, foco visible de 3 px, objetivos ≥ 44 px, estados con texto e ícono (capítulo IV, 4.1.2). | Revisión automática y manual con lector de pantalla. |
+| RNF06 | Interfaz es-PE con alternativa en-US; fechas con zona horaria. | Pruebas de idioma y fechas. |
+| RNF07 | p95 ≤ 2 s en operaciones simples con 20 usuarios concurrentes; tiempo real ≤ 2 s. | Prueba de carga documentada. |
+| RNF08 | Los reintentos no duplican alertas ni órdenes; RPO 24 h y RTO 8 h. | Pruebas de idempotencia y restauración. |
+| RNF09 | Los reportes de extorsión nunca se publican y la severidad nunca depende del plan de pago. | Casos negativos de publicación y de priorización. |
+| RNF10 | La Bóveda usa AES-256 en reposo y TLS en tránsito. | Revisión de configuración y prueba de borrado. |
 
 ### Matriz de trazabilidad
 
-| Historia | Necesidad candidata | Hipótesis | Épica |
-|---|---|---|---|
-| US01 | N04 | H01 | EP01 |
-| US02 | N05 | H04 | EP01 |
-| US03 | N02,N06 | H03 | EP02 |
-| US04 | N04 | H02 | EP03 |
-| US05 | N02 | H01 | EP03 |
-| US06 | N02 | H01 | EP03 |
-| US07 | N01,N06 | H03,H04 | EP02 |
-| US08 | N02,N06 | H03 | EP02 |
-| US09 | N06 | H06 | EP02 |
-| US10 | N01 | H04 | EP04 |
-| US11 | N01 | H04 | EP04 |
-| US12 | N01,N04 | H04 | EP04 |
-| US13 | N01 | H04 | EP04 |
-| US14 | N05 | H04 | EP04 |
-| US15 | N02 | H07 | EP05 |
-| US16 | N04 | H07 | EP05 |
-| US17 | N03 | H05 | EP06 |
-| US18 | N03 | H05 | EP06 |
-| US19 | N02 | H03,H06 | EP06 |
-| US20 | N03 | H01,H05 | EP06 |
-| US21 | N02 | H05 | EP06 |
-| US22 | N05 | H02,H05 | EP01 |
-| US23 | N02,N04 | H02 | EP03 |
-| US24 | N01 | H04 | EP04 |
-| TS01 | N06 | H03,H04 | EP07 |
-| TS02 | N02,N06 | H03,H06 | EP07 |
-| TS03 | N04 | H02 | EP07 |
-| TS04 | N01 | H04 | EP07 |
-| TS05 | N03 | H05 | EP07 |
-| TS06 | N02 | H03,H04 | EP07 |
-| TS07 | N04 | H07 | EP07 |
-| TS08 | N04 | H02,H04 | EP07 |
-
-### Insumos para el capítulo IV y Figma — sin modificar su trabajo
-
-- **Registro privado:** US03, US07, US08. Distinguir fecha del hecho y fecha de registro; adjuntos opcionales; extorsión privada.
-- **Apoyo:** US04–US06 y US23. Distinguir contactos pendientes/aceptados, envío fallido y ubicación antigua.
-- **Seguimiento / Command:** US10–US14 y US24. Responsable, prioridad motivada, próxima revisión, cierre interno y reapertura.
-- **Recuperación:** US17–US21. Sesión de emergencia restringida, error genérico, verificación adicional y revocación.
-- **Comunidad:** US15–US16. Avisos moderados, zonas aproximadas, antigüedad y ausencia de registros sin falsa sensación de seguridad.
-- **Landing e inclusión:** US01, US02 y US22. Dos públicos, rutas de acceso correspondientes y contenidos traducibles.
-- **Identidad existente:** púrpura #6D28D9, azul #2563EB, azul noche #0F172A, Manrope e Inter. El capítulo IV mantiene propiedad del diseño visual detallado.
-
-### Fuera del MVP comprometido
-
-Bloqueo del sistema operativo, anti-apagado, mesh de teléfonos apagados, fotos encubiertas, predicción delictiva, PIN de coacción, falso acompañante IA, seguros, despacho policial integrado y atención de expedientes de menores requieren investigación aparte. No se convierten en historias listas para desarrollar por aparecer en la visión inicial.
-
-### Criterio de preparación y cierre
-
-Antes de desarrollar una historia: aclarar reglas, dependencias, datos y permisos; revisar tamaño y aceptación. Para cerrarla: verificar escenarios positivos y negativos, accesibilidad aplicable, documentación, trazabilidad y ausencia de exposición de información. La validación con usuarios se registra por separado de las pruebas técnicas. Los resultados de entrevistas podrán cambiar prioridad, alcance y estimaciones mediante un commit documentado.
+| Historia | User goal / flujo | Pantallas del capítulo IV | Necesidad | Hipótesis | Épica |
+|---|---|---|---|---|---|
+| US01–US03 | — | Landing 4.3 | N03, N05 | H01 | EP01 |
+| US04 | — | Todas | N05 | H02 | EP01 |
+| US05–US07 | UG1 | — | N03 | H05 | EP02 |
+| US08 | UG1 / UF1 | W1, W1b | N03 | H05 | EP03 |
+| US09 | UG1 / UF1 | W2 | N04 | H05 | EP03 |
+| US10 | UG1 / UF1 | W3, W4, W4b, W4c | N03, N04 | H05 | EP03 |
+| US11, US12 | UG1 | W2 | N03 | H05 | EP03 |
+| US13 | UG3 / UF3 | W7, W8, W9 | N02 | H09 | EP03 |
+| US14 | UG7 | W2 | N04 | H02 | EP03 |
+| US15 | UG2 / UF2 | W5, W6 | N06 | H06 | EP04 |
+| US16, US17 | UG2 | — | N02, N06 | H03 | EP04 |
+| US18 | UG2 | W6 | N01 | H04 | EP04 |
+| US19 | UG6 / UF6 | C5, C5b | N06, N01 | H04, H06 | EP04 |
+| US20, US21 | UG7 | — | N04, N07 | H02 | EP05 |
+| US22, US23 | UG7 | — | N02 | H01 | EP05 |
+| US24, US25 | UG8 | — | N08 | H07 | EP06 |
+| US26 | UG5 | — | N08 | H12 | EP06 |
+| US27 | UG5 / UF5 | C4, C4b | N08 | H07, H12 | EP06 |
+| US28 | UG5 | — | N08 | H12 | EP06 |
+| US29 | UG9 | — | N08 | H10 | EP07 |
+| US30 | UG10 | — | N02 | H10 | EP07 |
+| US31 | — | — | N08 | H10 | EP07 |
+| US32–US34 | UG1 | — | N03 | H11 | EP08 |
+| US35 | UG4 / UF4 | C1 | N07 | H08 | EP09 |
+| US36 | UG4 / UF4 | C2 | N07 | H08 | EP09 |
+| US37 | UG4 / UF4 | C3, C3b | N07 | H08 | EP09 |
+| US38 | UG4 | C3 | N01 | H08 | EP09 |
+| US39 | — | C6 | N07 | H08 | EP10 |
+| US40 | — | — | N08 | H07 | EP10 |
+| TS01–TS10 | — | — | N02, N03, N04 | H05, H08, H11 | EP11 |
