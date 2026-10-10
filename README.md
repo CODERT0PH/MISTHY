@@ -2,7 +2,7 @@
 
 <img src="docs/assets/banner.svg" alt="MISTHY · Seguridad ciudadana 360° para Lima" width="100%"/>
 
-<a href="https://github.com/CODERT0PH/MISTHY-">
+<a href="https://github.com/CODERT0PH/MISTHY">
   <img src="https://readme-typing-svg.demolab.com?font=Manrope&weight=700&size=22&duration=3200&pause=900&color=6D28D9&center=true&vCenter=true&width=640&lines=Como+el+Misti+vigila+Arequipa%2C+Misthy+vigila+tu+cuadra;App+m%C3%B3vil+%C2%B7+Misthy+Web+%C2%B7+Misthy+Command;Piloto%3A+Villa+El+Salvador%2C+Lima" alt="Como el Misti vigila Arequipa, Misthy vigila tu cuadra"/>
 </a>
 
@@ -14,7 +14,7 @@
 <p>
   <a href="https://www.figma.com/design/MNhixqFUFzjBqxVnzp5dTJ"><img src="https://img.shields.io/badge/Figma-Product%20Design-6D28D9?style=flat-square&logo=figma&logoColor=white" alt="Figma"/></a>
   <img src="https://img.shields.io/badge/rama-develop-2563EB?style=flat-square&logo=git&logoColor=white" alt="Rama develop"/>
-  <img src="https://img.shields.io/github/last-commit/CODERT0PH/MISTHY-/develop?style=flat-square&color=1E293B&label=%C3%BAltimo%20commit" alt="Último commit"/>
+  <img src="https://img.shields.io/github/last-commit/CODERT0PH/MISTHY/develop?style=flat-square&color=1E293B&label=%C3%BAltimo%20commit" alt="Último commit"/>
   <img src="https://img.shields.io/badge/autor-CODERT0PH-0F172A?style=flat-square&logo=github&logoColor=white" alt="Autor: CODERT0PH"/>
 </p>
 
@@ -104,7 +104,7 @@ Tipografía: **Manrope** · Espaciado en base 4 · Radios de 8, 12 y 16 px.
 ## 📂 Estructura del repositorio
 
 ```text
-MISTHY-/
+MISTHY/
 ├── README.md
 └── docs/
     ├── assets/          # banner del README
